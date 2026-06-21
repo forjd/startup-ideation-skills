@@ -93,6 +93,10 @@ You can also use each skill on its own.
 
 ## Installation
 
+This repository is compatible with Hermes Agent, OpenAI Codex plugins, and Claude Code plugins.
+
+### Hermes Agent
+
 This repository is laid out as a Hermes skill tap. Skills live under `skills/<skill-name>/SKILL.md`.
 
 Add the tap:
@@ -111,6 +115,57 @@ hermes skills install startup-v1-feasibility
 ```
 
 Depending on where Hermes is running, you may need to start a new session or restart the gateway before newly installed skills are available.
+
+### OpenAI Codex
+
+This repository includes a Codex plugin manifest at `.codex-plugin/plugin.json` and a repo marketplace entry at `.agents/plugins/marketplace.json`.
+
+Add the marketplace:
+
+```bash
+codex plugin marketplace add forjd/startup-ideation-skills
+```
+
+Install the plugin:
+
+```bash
+codex plugin add startup-ideation-skills@startup-ideation-skills
+```
+
+You can also browse and install it from the Codex plugin UI:
+
+```bash
+codex /plugins
+```
+
+Codex can then invoke the bundled skills when relevant, or you can explicitly mention them with `$startup-problem-ledger`, `$startup-problem-grilling`, `$startup-validation-test-designer`, or `$startup-v1-feasibility`.
+
+### Claude Code
+
+This repository includes a Claude Code plugin manifest at `.claude-plugin/plugin.json` and a marketplace file at `.claude-plugin/marketplace.json`.
+
+Add the marketplace:
+
+```text
+/plugin marketplace add forjd/startup-ideation-skills
+```
+
+Install the plugin:
+
+```text
+/plugin install startup-ideation-skills@startup-ideation-skills
+```
+
+Claude Code plugin skills are namespaced by the plugin name. You can invoke them as:
+
+```text
+/startup-ideation-skills:startup-problem-ledger
+/startup-ideation-skills:startup-problem-grilling
+/startup-ideation-skills:startup-validation-test-designer
+/startup-ideation-skills:startup-v1-feasibility
+```
+
+Run `/reload-plugins` or restart Claude Code if newly installed plugin skills do not appear immediately.
 
 ## Example prompts
 
@@ -140,6 +195,14 @@ It will not try to produce a long list of plausible-sounding SaaS concepts. The 
 
 ```text
 .
+├── .agents
+│   └── plugins
+│       └── marketplace.json          # OpenAI Codex repo marketplace entry
+├── .claude-plugin
+│   ├── marketplace.json              # Claude Code marketplace entry
+│   └── plugin.json                   # Claude Code plugin manifest
+├── .codex-plugin
+│   └── plugin.json                   # OpenAI Codex plugin manifest
 ├── LICENSE
 ├── README.md
 └── skills

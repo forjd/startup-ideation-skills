@@ -1,0 +1,21 @@
+{
+  "name": "startup-ideation-skills",
+  "displayName": "Startup Ideation Skills",
+  "version": "0.1.0",
+  "description": "Evidence-first startup ideation skills for problem discovery, assumption grilling, validation tests, and narrow v1 scoping.",
+  "author": {
+    "name": "Forjd",
+    "url": "https://github.com/forjd"
+  },
+  "homepage": "https://github.com/forjd/startup-ideation-skills",
+  "repository": "https://github.com/forjd/startup-ideation-skills",
+  "license": "MIT",
+  "keywords": [
+    "startup",
+    "ideation",
+    "customer-discovery",
+    "validation",
+    "mvp"
+  ],
+  "skills": "./skills/"
+}

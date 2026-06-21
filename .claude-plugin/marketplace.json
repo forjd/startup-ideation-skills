@@ -1,0 +1,21 @@
+{
+  "name": "startup-ideation-skills",
+  "owner": {
+    "name": "Forjd"
+  },
+  "description": "Evidence-first startup ideation skills for Claude Code.",
+  "plugins": [
+    {
+      "name": "startup-ideation-skills",
+      "source": {
+        "source": "github",
+        "repo": "forjd/startup-ideation-skills"
+      },
+      "description": "Evidence-first startup ideation skills for problem discovery, assumption grilling, validation tests, and narrow v1 scoping.",
+      "version": "0.1.0",
+      "author": {
+        "name": "Forjd"
+      }
+    }
+  ]
+}
