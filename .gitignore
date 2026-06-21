@@ -1,0 +1,14 @@
+# OS/editor
+.DS_Store
+.vscode/
+.idea/
+
+# Python/cache
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+
+# Local Hermes/generated state
+.hermes/
+*.log
