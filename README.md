@@ -1,52 +1,181 @@
 # Startup Ideation Skills
 
-Hermes Agent skills for turning loose startup ideas into testable problem statements, validation tests, and narrow v1 scopes.
+Open source Hermes Agent skills for turning startup ideas into clearer problems, validation tests, and narrow first versions.
 
-The package deliberately separates the workflow into small composable skills:
+This repository is for people who want an AI agent to be useful during early-stage startup thinking without becoming a hype machine. The skills push the agent to slow down, capture the pain properly, question the assumptions, design evidence-gathering tests, and only then scope a small v1.
 
-- `startup-problem-ledger` — capture raw pains, sharpen them, and decide whether they are startup-shaped.
-- `startup-problem-grilling` — stress-test the problem, buyer, distribution, pricing, founder fit, and tarpit risk.
-- `startup-validation-test-designer` — design interviews, smoke tests, outreach, paid audits, and kill criteria before building.
-- `startup-v1-feasibility` — cut the idea down to a narrow wedge and 2–4 week v1.
+MIT licensed. Built by Forjd.
 
 ## Why this exists
 
-Most startup ideation goes wrong by jumping from a vague frustration to a product idea too quickly. These skills push the agent to slow down, identify who has the problem, what it costs, how people work around it now, who pays, whether the first ten users are reachable, and what evidence would justify building anything.
+Most startup ideation goes wrong by jumping from a vague frustration to a product idea too quickly.
 
-The useful workflow is not “generate 50 startup ideas”. It is:
+The useful workflow is not:
+
+```text
+Generate 50 startup ideas → pick the one that sounds exciting → build too much
+```
+
+It is closer to:
 
 ```text
 Observe pain → log problem → sharpen problem → grill assumptions → design validation test → scope v1 → continue/kill/park
 ```
 
-## Suggested flow
+These skills are designed to make that second workflow easier to run with Hermes Agent.
 
-1. Use `startup-problem-ledger` when the user has a pain, frustration, workflow gap, customer complaint, internal inefficiency, or early startup idea.
-2. Use `startup-problem-grilling` to challenge the problem and expose weak assumptions.
-3. Use `startup-validation-test-designer` to plan a small evidence-gathering test before building.
-4. Use `startup-v1-feasibility` once the problem survives questioning and the user wants to scope a small first version.
+They focus on practical questions:
 
-## Installation as a Hermes skill tap
+- Who has the problem?
+- When does it happen?
+- What is the current workaround?
+- What does doing nothing cost?
+- Who pays?
+- What alternatives already exist?
+- Why now?
+- Can you reach 10 real users?
+- Can you test demand before building?
+- Could a useful v1 be built in 2–4 weeks?
 
-This repository is laid out as a skill tap, with skills under `skills/<skill-name>/SKILL.md`.
+## Skills included
+
+### `startup-problem-ledger`
+
+Capture raw observations before they turn into premature product ideas.
+
+Use it for annoyances, repeated manual tasks, customer complaints, workflow gaps, internal inefficiencies, market oddities, or early startup ideas.
+
+It records the raw observation, context, user, job, obstacle, workaround, cost, frequency, emotional intensity, potential buyer, alternatives, and next validation step.
+
+### `startup-problem-grilling`
+
+Stress-test a captured problem.
+
+This is the anti-delusion skill. It questions the problem, buyer, budget, distribution, willingness to pay, founder-market fit, tarpit risk, and whether building is actually the right next step.
+
+It is deliberately sceptical, but not cynical. A small useful business can pass. A vague AI-shaped idea with no buyer should not.
+
+### `startup-validation-test-designer`
+
+Design the smallest credible validation test before building.
+
+It can help plan customer interviews, direct outreach, smoke tests, fake doors, demo videos, paid audits, manual services, concierge tests, and pass/fail criteria.
+
+It also blocks weak customer discovery questions such as “Would you use this?” and pushes towards evidence from real behaviour.
+
+### `startup-v1-feasibility`
+
+Cut an idea down to a narrow wedge and a 2–4 week v1.
+
+It helps identify the smallest useful workflow, what can be manual, what should be out of scope, and what the first version needs to teach commercially.
+
+The default bias is towards boring, fast v1 modes: concierge, Wizard-of-Oz, reports, workflow wrappers, narrow automation, diagnostics, and paid pilots.
+
+## Suggested workflow
+
+Use the skills as a chain:
+
+```text
+startup-problem-ledger
+→ startup-problem-grilling
+→ startup-validation-test-designer
+→ startup-v1-feasibility
+```
+
+A typical session might look like this:
+
+1. Capture a raw pain or idea with `startup-problem-ledger`.
+2. Challenge it with `startup-problem-grilling`.
+3. If it survives, design a test with `startup-validation-test-designer`.
+4. If the test creates enough signal, scope a small v1 with `startup-v1-feasibility`.
+
+You can also use each skill on its own.
+
+## Installation
+
+This repository is laid out as a Hermes skill tap. Skills live under `skills/<skill-name>/SKILL.md`.
+
+Add the tap:
 
 ```bash
 hermes skills tap add https://github.com/Forjd/startup-ideation-skills
+```
+
+Install the skills you want:
+
+```bash
 hermes skills install startup-problem-ledger
 hermes skills install startup-problem-grilling
 hermes skills install startup-validation-test-designer
 hermes skills install startup-v1-feasibility
 ```
 
-Repository name/URL can be changed after publishing if needed.
+Depending on where Hermes is running, you may need to start a new session or restart the gateway before newly installed skills are available.
 
-## Future candidates
+## Example prompts
 
-These are deliberately not included as separate skills yet, but may be worth adding later if the workflow grows:
+```text
+Use startup-problem-ledger to capture this: conveyancing teams waste time chasing inconsistent source-of-funds evidence from clients.
+```
 
-- `startup-interview-synthesis` — turn interview notes/transcripts into comparable evidence.
-- `startup-weekly-ideation-review` — review a ledger of ideas, tests, killed ideas, parked ideas, and next actions.
+```text
+Use startup-problem-grilling to challenge this problem before I build anything.
+```
+
+```text
+Use startup-validation-test-designer to create a two-week validation plan for this idea.
+```
+
+```text
+Use startup-v1-feasibility to cut this down to a 2–4 week v1 with manual steps allowed.
+```
+
+## What this is not
+
+This is not a startup idea generator.
+
+It will not try to produce a long list of plausible-sounding SaaS concepts. The goal is to help an agent think more like a practical founder: find a painful problem, identify a reachable user and buyer, test demand cheaply, and avoid building the wrong thing.
+
+## Repository structure
+
+```text
+.
+├── LICENSE
+├── README.md
+└── skills
+    ├── README.md
+    ├── startup-problem-ledger
+    │   └── SKILL.md
+    ├── startup-problem-grilling
+    │   └── SKILL.md
+    ├── startup-validation-test-designer
+    │   └── SKILL.md
+    └── startup-v1-feasibility
+        └── SKILL.md
+```
+
+## Future ideas
+
+Possible future skills:
+
+- `startup-interview-synthesis` — turn interview notes or transcripts into comparable evidence.
+- `startup-weekly-ideation-review` — review a ledger of ideas, validation tests, killed ideas, parked ideas, and next actions.
+- `startup-market-map` — map incumbents, point solutions, manual services, and wedge opportunities.
+
+## Contributing
+
+Contributions are welcome.
+
+Useful contributions include:
+
+- Better question banks.
+- More examples from real founder workflows.
+- Sharper anti-patterns and tarpit checks.
+- Improvements to the validation and v1 scoping templates.
+- New skills that fit the same practical, evidence-first style.
+
+Please keep additions concrete. The goal is not more startup jargon; it is better agent behaviour.
 
 ## Licence
 
-MIT © 2026 Forjd.
+MIT © 2026 Forjd. See [LICENSE](LICENSE).
