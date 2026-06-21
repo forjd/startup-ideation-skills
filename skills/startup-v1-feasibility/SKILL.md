@@ -1,14 +1,14 @@
 ---
 name: startup-v1-feasibility
 title: Startup V1 Feasibility
-description: Scope a startup idea into a 2–4 week v1 that tests the riskiest assumption.
-version: 0.1.0
+description: Scope a startup idea into a narrow wedge and 2–4 week v1 that tests the riskiest assumption.
+version: 0.2.0
 author: Forjd
 license: MIT
 platforms: [linux, macos, windows]
 metadata:
   hermes:
-    tags: [startup, v1, mvp, feasibility, validation, product-scope]
+    tags: [startup, v1, mvp, feasibility, validation, product-scope, wedge]
     category: business
     requires_toolsets: []
 ---
@@ -17,23 +17,43 @@ metadata:
 
 ## When to use
 
-Use when a captured and grilled startup problem looks worth testing and the user wants to decide what to build first.
+Use when a captured, grilled, and preferably tested startup problem looks worth building against, and the user wants to decide what to build first.
 
 This skill prevents v1 scope creep. The first version should test the riskiest useful assumption, not become a miniature version of the imagined company.
 
 ## Core principle
 
-A good v1 is small enough to build in 2–4 weeks and sharp enough that real user behaviour teaches something.
+A good v1 is small enough to build in 2–4 weeks and sharp enough that real user behaviour teaches something commercially useful.
 
 ## Workflow
 
-1. Start from the problem canvas and grilling notes.
-2. Identify the riskiest assumption that building can test.
-3. Choose a v1 mode: manual concierge, internal tool, workflow wrapper, integration, report, landing page plus manual fulfilment, or narrow SaaS feature.
-4. Define the smallest user journey that proves value.
-5. List what is explicitly out of scope.
-6. Define success and kill criteria before implementation.
-7. Produce a 2–4 week build plan only if the scope is credible.
+1. Start from the problem ledger, grilling notes, and validation results if available.
+2. Identify the narrow wedge: the painful sliver where a first product can deliver value.
+3. Identify the riskiest assumption that building can test.
+4. Choose a v1 mode: manual concierge, Wizard-of-Oz, internal tool, workflow wrapper, integration, report, landing page plus manual fulfilment, narrow automation, or paid pilot.
+5. Define the smallest user journey that proves value.
+6. Cut scope until it is almost uncomfortable.
+7. List what is explicitly out of scope.
+8. Define success and kill criteria before implementation.
+9. Produce a 2–4 week build plan only if the scope is credible.
+
+## Wedge generator
+
+Convert broad areas into narrow entry points:
+
+```markdown
+Broad area:
+Target market:
+Known pain:
+Founder advantage:
+
+Potential wedges:
+1. [Wedge] — [user] — [first value delivered] — [build complexity] — [sales difficulty]
+2. ...
+3. ...
+```
+
+Pick the wedge where pain, reachability, and build speed overlap.
 
 ## V1 modes
 
@@ -45,6 +65,35 @@ Prefer boring, fast modes:
 - Workflow wrapper: connect existing tools and reduce one painful step.
 - Narrow automation: automate one repeated task, not the whole job.
 - Paid pilot: deliver value for a small number of users before scalable software.
+- Diagnostic/audit: reveal a costly problem and sell the next step.
+
+## Scope cutter
+
+Force the v1 through this cut:
+
+```markdown
+Core job:
+Must have:
+Should not have:
+Manual steps allowed:
+Fake doors allowed:
+Human-in-loop required:
+First demo flow:
+Build estimate:
+Risks:
+```
+
+Default exclusions unless essential to the test:
+
+- Dashboards
+- Team management
+- Billing
+- Permissions systems
+- Complex onboarding
+- Full integrations
+- Polished admin tools
+- Multi-tenant platform architecture
+- “AI agent” autonomy where a script, form, or checklist would test the value faster
 
 ## Feasibility questions
 
@@ -64,9 +113,16 @@ Prefer boring, fast modes:
 
 If we build [small thing] for [specific user] in [specific moment], we will learn whether [riskiest assumption].
 
+## Recommended wedge
+
+Wedge: ...
+User: ...
+First value delivered: ...
+Why this wedge: ...
+
 ## Recommended v1 mode
 
-[Concierge / Wizard-of-Oz / Report / Workflow wrapper / Narrow automation / Paid pilot]
+[Concierge / Wizard-of-Oz / Report / Workflow wrapper / Narrow automation / Paid pilot / Diagnostic]
 
 Why: ...
 
@@ -75,6 +131,18 @@ Why: ...
 1. ...
 2. ...
 3. ...
+
+## Scope cut
+
+Core job: ...
+Must have: ...
+Should not have: ...
+Manual steps allowed: ...
+Fake doors allowed: ...
+Human-in-loop required: ...
+First demo flow: ...
+Build estimate: ...
+Risks: ...
 
 ## In scope
 
@@ -116,3 +184,4 @@ Why: ...
 - Do not include authentication, billing, teams, dashboards, integrations, or admin tooling unless they are essential to the riskiest test.
 - Do not treat “can I build it?” as the only question. The better question is whether the build teaches something commercially useful.
 - Do not hide manual fulfilment. Manual is often the fastest way to learn.
+- Do not let the v1 absorb every good idea from the grilling step. A wedge wins by being narrow.

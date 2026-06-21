@@ -1,14 +1,14 @@
 ---
 name: startup-problem-grilling
 title: Startup Problem Grilling
-description: Stress-test a captured startup problem with sharp questions before product scoping.
-version: 0.1.0
+description: Stress-test a captured startup problem with sharp questions before validation or product scoping.
+version: 0.2.0
 author: Forjd
 license: MIT
 platforms: [linux, macos, windows]
 metadata:
   hermes:
-    tags: [startup, ideation, validation, customer-discovery, critique]
+    tags: [startup, ideation, validation, customer-discovery, critique, tarpit]
     category: business
     requires_toolsets: []
 ---
@@ -17,27 +17,27 @@ metadata:
 
 ## When to use
 
-Use after a startup problem has been captured, or when the user asks whether a business idea is worth pursuing.
+Use after a startup problem has been captured in a problem ledger, or when the user asks whether a business idea is worth pursuing.
 
-This skill is deliberately sceptical. The goal is not to kill ideas for sport; it is to find the fragile assumptions before the user spends weeks building the wrong thing.
+This skill is deliberately sceptical. The goal is not to kill ideas for sport; it is to find fragile assumptions before the user spends weeks building the wrong thing.
 
 ## Stance
 
-Be direct, practical, and specific. Question the problem, buyer, urgency, reachability, and build scope. Avoid generic startup theatre.
+Be direct, practical, and specific. Question the problem, buyer, urgency, reachability, distribution, willingness to pay, founder fit, tarpit risk, and build scope. Avoid generic startup theatre.
 
 ## Inputs to request if missing
 
-Ask for the captured problem canvas if it is not already in context:
+Ask for the problem ledger if it is not already in context:
 
 ```markdown
 Problem:
-Who has it:
+User/persona:
 When it happens:
 Current workaround:
-Cost of the problem:
-How often it happens:
-Who pays:
-Existing alternatives:
+Cost of doing nothing:
+Frequency:
+Potential buyer:
+Existing tools/alternatives:
 Why now:
 Could I reach 10 users:
 Could I build v1 in 2–4 weeks:
@@ -47,10 +47,12 @@ Could I build v1 in 2–4 weeks:
 
 1. Restate the problem in its strongest concrete form.
 2. Identify the weakest 3–5 assumptions.
-3. Ask hard questions grouped by theme.
-4. Separate `problem risk`, `market risk`, `reach risk`, `willingness-to-pay risk`, and `build risk`.
-5. Suggest small validation moves that do not require building the full product.
-6. End with a verdict: `Promising`, `Needs narrowing`, `Weak until proven`, or `Probably not worth building yet`.
+3. Map user, buyer, blocker, budget owner, and risk owner.
+4. Check tarpit risk and whether distribution may be harder than product.
+5. Challenge pricing and willingness-to-pay early.
+6. Score founder-market fit against the user's actual advantages.
+7. Suggest small validation moves that do not require building the full product.
+8. End with a verdict: `Promising`, `Needs narrowing`, `Weak until proven`, or `Probably not worth building yet`.
 
 ## Question bank
 
@@ -60,40 +62,94 @@ Could I build v1 in 2–4 weeks:
 - What happens if they ignore it?
 - Is it a frequent problem, a severe problem, or neither?
 - Is the pain felt by the same person who would approve a fix?
+- Is the current workaround hated, or merely untidy?
 
-### Current workaround
+### Buyer mapper
 
-- What spreadsheet, Slack ritual, outsourced labour, internal tool, or manual review exists today?
-- Why have existing tools not solved it?
-- Is the workaround hated, or merely untidy?
-- Would the buyer prefer a better process over another piece of software?
+Answer these explicitly:
 
-### Buyer and budget
+```markdown
+Who feels the pain:
+Who signs off spend:
+Who blocks adoption:
+Who owns the risk:
+Who benefits from the outcome:
+Who loses power if this works:
+Budget line or spend category:
+```
 
+Hard questions:
+
+- Is the buyer the same person as the daily user?
 - Who owns the budget?
 - What budget line would this come from?
 - Is the cost visible enough for someone to justify paying?
 - Would this be bought by an individual, team lead, department, or company?
 
-### Existing alternatives
+### Current workaround and alternatives
 
+- What spreadsheet, Slack ritual, outsourced labour, internal tool, manual review, or agency already exists?
+- Why have existing tools not solved it?
 - What would they search for if they wanted to solve it today?
 - Which boring incumbent is already close enough?
 - Could an agency, Zapier workflow, VA, spreadsheet, or LLM prompt solve 80% of it?
 - What would make switching worth the bother?
 
-### Reachability
+### Tarpit detector
+
+Check whether the idea has structural traps:
+
+```markdown
+Marketplace or network effects required:
+Vague buyer:
+Consumer habit change required:
+Distribution harder than product:
+Many failed versions already:
+Pain real but willingness to pay weak:
+Feature rather than company:
+Only compelling because AI is fashionable:
+Trust/compliance burden too high for v1:
+```
+
+Rate tarpit risk as `Low`, `Medium`, or `High`, and say why.
+
+### Distribution and reachability
 
 - Can the user name 10 people or organisations to contact?
 - Is there a community, marketplace, job title, search query, association, or LinkedIn filter that exposes these users?
 - Would these people talk about the problem, or is it private/sensitive?
 - Can outreach happen before anything is built?
+- What is the first credible channel: direct outreach, LinkedIn content, niche community, partnership, marketplace, SEO, open-source wedge, audit/diagnostic, webinar?
 
 ### Timing
 
 - Why now?
 - What changed in regulation, technology, behaviour, cost pressure, AI capability, or market structure?
 - Is this a new problem, or an old problem with a newly cheap solution?
+
+### Pricing and willingness to pay
+
+- What is the current cost of the pain?
+- Is there existing spend on staff time, consultants, tools, services, or risk reduction?
+- What pricing model could match the value: per file, per user, per team, usage-based, paid audit, setup fee plus subscription, or service-led pilot?
+- How could willingness to pay be tested before building a SaaS product?
+
+### Founder-market fit
+
+Score quickly from 0–3:
+
+```markdown
+Understands the user: /3
+Can reach users: /3
+Can build v1: /3
+Pain is frequent: /3
+Pain is expensive or risky: /3
+Clear buyer: /3
+Newly possible now: /3
+Can test demand before building: /3
+```
+
+Use the score as a thinking aid, not false precision.
 
 ### V1 feasibility
 
@@ -115,19 +171,40 @@ Could I build v1 in 2–4 weeks:
 2. ...
 3. ...
 
+## Buyer map
+
+Who feels the pain: ...
+Who signs off spend: ...
+Who blocks adoption: ...
+Who owns risk: ...
+Budget line: ...
+
+## Tarpit risk
+
+[Low / Medium / High]
+
+Reasons:
+- ...
+
+## Founder-market fit
+
+Score: .../24
+
+Biggest gap: ...
+
 ## Grilling questions
 
 ### Problem risk
-n. ...
+1. ...
 
 ### Buyer / willingness-to-pay risk
-n. ...
+1. ...
 
-### Reach risk
-n. ...
+### Reach / distribution risk
+1. ...
 
 ### Build risk
-n. ...
+1. ...
 
 ## Fast validation moves
 
@@ -147,4 +224,5 @@ Because: ...
 - Do not become a cheerleader. If it is vague, say it is vague.
 - Do not require venture-scale potential. A small useful business can still pass.
 - Do not over-index on TAM. Early evidence from real reachable users matters more.
-- Do not suggest building as the default next step when interviews, landing pages, manual fulfilment, or paid pilots would answer the bigger risk faster.
+- Do not suggest building as the default next step when interviews, landing pages, manual fulfilment, paid audits, or paid pilots would answer the bigger risk faster.
+- Do not let “AI can do this now” substitute for a buyer, channel, or painful current workaround.
