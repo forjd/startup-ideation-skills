@@ -1,8 +1,10 @@
 # Startup Ideation Skills
 
-Open source Hermes Agent skills for turning startup ideas into clearer problems, validation tests, and narrow first versions.
+Open source Agent Skills for turning startup ideas into clearer problems, validation tests, and narrow first versions.
 
-This repository is for people who want an AI agent to be useful during early-stage startup thinking without becoming a hype machine. The skills push the agent to slow down, capture the pain properly, question the assumptions, design evidence-gathering tests, and only then scope a small v1.
+This repository follows the Agent Skills open standard: each skill is a directory with a `SKILL.md` file containing reusable instructions and metadata. The same skill content can be used across compatible agent runtimes, with packaging metadata included for Hermes Agent, OpenAI Codex, and Claude Code.
+
+It is for people who want an AI agent to be useful during early-stage startup thinking without becoming a hype machine. The skills push the agent to slow down, capture the pain properly, question the assumptions, design evidence-gathering tests, and only then scope a small v1.
 
 MIT licensed. Built by Forjd.
 
@@ -22,7 +24,7 @@ It is closer to:
 Observe pain → log problem → sharpen problem → grill assumptions → design validation test → scope v1 → continue/kill/park
 ```
 
-These skills are designed to make that second workflow easier to run with Hermes Agent.
+These skills are designed to make that second workflow easier to run in any agent that supports reusable skills.
 
 They focus on practical questions:
 
@@ -36,6 +38,24 @@ They focus on practical questions:
 - Can you reach 10 real users?
 - Can you test demand before building?
 - Could a useful v1 be built in 2–4 weeks?
+
+## Compatibility
+
+The canonical skill format is the open Agent Skills layout:
+
+```text
+skills/<skill-name>/SKILL.md
+```
+
+This repository also includes runtime-specific packaging files so the same skills can be installed through several agent ecosystems:
+
+- Hermes Agent skill tap: `skills/`
+- OpenAI Codex plugin: `.codex-plugin/plugin.json`
+- OpenAI Codex repo marketplace: `.agents/plugins/marketplace.json`
+- Claude Code plugin: `.claude-plugin/plugin.json`
+- Claude Code marketplace: `.claude-plugin/marketplace.json`
+
+The skill instructions themselves are not tied to a single agent product.
 
 ## Skills included
 
@@ -93,13 +113,20 @@ You can also use each skill on its own.
 
 ## Installation
 
-This repository is compatible with Hermes Agent, OpenAI Codex plugins, and Claude Code plugins.
+### Open Agent Skills layout
+
+For any agent runtime that supports the open Agent Skills directory format, use the canonical skill folders directly:
+
+```text
+skills/startup-problem-ledger/SKILL.md
+skills/startup-problem-grilling/SKILL.md
+skills/startup-validation-test-designer/SKILL.md
+skills/startup-v1-feasibility/SKILL.md
+```
 
 ### Hermes Agent
 
-This repository is laid out as a Hermes skill tap. Skills live under `skills/<skill-name>/SKILL.md`.
-
-Add the tap:
+Add the repository as a skill tap:
 
 ```bash
 hermes skills tap add https://github.com/Forjd/startup-ideation-skills
@@ -236,6 +263,7 @@ Useful contributions include:
 - Sharper anti-patterns and tarpit checks.
 - Improvements to the validation and v1 scoping templates.
 - New skills that fit the same practical, evidence-first style.
+- Compatibility improvements for other Agent Skills runtimes.
 
 Please keep additions concrete. The goal is not more startup jargon; it is better agent behaviour.
 
