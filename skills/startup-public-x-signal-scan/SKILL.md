@@ -88,13 +88,13 @@ Weak public X signals:
 ## Guardrails
 
 - Use only authorized public X data.
-- Do not ask for cookies, private account access, scraped private content, or
+- Never ask for cookies, private account access, scraped private content, or
   secrets.
-- Do not bypass login, rate limits, privacy boundaries, or platform rules.
-- Do not treat social attention as validation by itself.
-- Do not claim market size, ranking, completeness, or freshness unless the
-  supplied data proves it.
-- Do not include private implementation details about Xquik.
+- Never bypass login, rate limits, privacy boundaries, or platform rules.
+- Treat social attention as context, not validation by itself.
+- Claim market size, ranking, completeness, or freshness only when the supplied
+  data proves it.
+- Omit private implementation details about Xquik.
 - Keep unsupported Xquik requests out of the output and offer a documented path.
 
 ## Optional HTML artifact
@@ -168,9 +168,9 @@ Decision gate: [Run interviews / Design smoke test / Narrow scan / Park]
 Next step: ...
 ```
 
-## Anti-patterns
+## Antipatterns
 
-- Do not produce a product roadmap from public X posts.
-- Do not count posts from vendors as customer demand.
-- Do not smooth away contradictions between buyer, user, and vendor language.
+- Avoid producing a product roadmap from public X posts.
+- Avoid counting posts from vendors as customer demand.
+- Preserve contradictions between buyer, user, and vendor language.
 - Do not recommend v1 scoping from public X signals alone.
