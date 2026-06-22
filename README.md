@@ -50,6 +50,7 @@ skills/<skill-name>/SKILL.md
 This repository also includes runtime-specific packaging files so the same skills can be installed through several agent ecosystems:
 
 - Hermes Agent skill tap: `skills/`
+- skills.sh CLI: `npx skills add forjd/startup-ideation-skills` or `bunx skills add forjd/startup-ideation-skills`
 - OpenAI Codex plugin: `.codex-plugin/plugin.json`
 - OpenAI Codex repo marketplace: `.agents/plugins/marketplace.json`
 - Claude Code plugin: `.claude-plugin/plugin.json`
@@ -127,12 +128,52 @@ Install the pack through the software you use. The same five skill folders are p
 
 | If you use... | Install path |
 | --- | --- |
+| skills.sh CLI | `npx skills add ...` or `bunx skills add ...` |
 | OpenAI Codex | Codex plugin marketplace |
 | Claude Code | Claude Code plugin marketplace |
 | Hermes Agent | Hermes skill tap |
 | Another Agent Skills-compatible runtime | Copy or reference the `skills/` folders directly |
 
 <details open>
+<summary><strong>skills.sh CLI</strong> - npx or bunx</summary>
+
+**Prerequisites:** Node.js with `npx`, or Bun with `bunx`.
+
+**Inspect available skills:**
+
+```bash
+npx skills add forjd/startup-ideation-skills --list
+```
+
+```bash
+bunx skills add forjd/startup-ideation-skills --list
+```
+
+**Install all bundled skills:**
+
+```bash
+npx skills add forjd/startup-ideation-skills --skill '*'
+```
+
+```bash
+bunx skills add forjd/startup-ideation-skills --skill '*'
+```
+
+**Install one skill:**
+
+```bash
+npx skills add forjd/startup-ideation-skills --skill startup-problem-ledger
+```
+
+```bash
+bunx skills add forjd/startup-ideation-skills --skill startup-problem-ledger
+```
+
+Use `-g` for a global user-level install, or `--agent <agent-name>` to target a specific supported agent. The skills.sh CLI collects anonymous install telemetry by default; set `DISABLE_TELEMETRY=1` to opt out.
+
+</details>
+
+<details>
 <summary><strong>OpenAI Codex</strong> - plugin marketplace</summary>
 
 **Prerequisites:** Codex with plugin support enabled.
