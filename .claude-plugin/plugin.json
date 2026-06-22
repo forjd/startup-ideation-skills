@@ -2,7 +2,7 @@
   "name": "startup-ideation-skills",
   "displayName": "Startup Ideation Skills",
   "version": "0.2.0",
-  "description": "Evidence-first startup ideation skills for problem inventory, problem discovery, assumption grilling, validation tests, interview synthesis, and narrow v1 scoping.",
+  "description": "Evidence-first startup ideation skills for problem inventory, problem discovery, assumption grilling, public X signal scans, validation tests, interview synthesis, and narrow v1 scoping.",
   "author": {
     "name": "Forjd",
     "url": "https://github.com/forjd"
@@ -14,6 +14,7 @@
     "startup",
     "ideation",
     "customer-discovery",
+    "public-signals",
     "interviews",
     "validation",
     "mvp"

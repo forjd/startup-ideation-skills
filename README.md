@@ -6,7 +6,7 @@ They are built for agents that should behave less like idea generators and more 
 
 ```text
 Observe pain -> inventory problems -> log one problem -> grill assumptions
--> test demand -> synthesize evidence -> scope v1 or park it
+-> scan public X signals -> test demand -> synthesize evidence -> scope v1 or park it
 ```
 
 Built by Forjd. MIT licensed.
@@ -30,9 +30,10 @@ Start with `startup-problem-inventory` if you are still exploring. Start with `s
 | 1 | `startup-problem-inventory` | You have founder context, domain observations, customer complaints, or messy workflows and want candidates. | Problem arenas, scored candidates, best ledger picks, unknowns, evidence packet seed. |
 | 2 | `startup-problem-ledger` | You have one raw pain, annoyance, workflow gap, or early idea. | A structured problem entry, sharper problem statement, unknowns, next questions. |
 | 3 | `startup-problem-grilling` | You want to stress-test the problem before designing a test or building. | Weak assumptions, buyer map, tarpit risk, founder fit, validation moves, verdict. |
-| 4 | `startup-validation-test-designer` | You need the smallest credible demand test. | Test plan, hypothesis, target users, outreach angle, pass/fail criteria, what to record. |
-| 5 | `startup-interview-synthesis` | You have interview notes, replies, calls, or validation results. | Evidence summary, contradictions, signal strength, follow-ups, proceed/park/kill decision. |
-| 6 | `startup-v1-feasibility` | Evidence is strong enough to consider a small first version. | Narrow wedge, v1 mode, scope cuts, 2-4 week plan, success and rethink criteria. |
+| 4 | `startup-public-x-signal-scan` | You need to inspect public X conversations before choosing a test or outreach angle. | Signal scan plan, search angles, evidence table, confidence limits, validation next steps. |
+| 5 | `startup-validation-test-designer` | You need the smallest credible demand test. | Test plan, hypothesis, target users, outreach angle, pass/fail criteria, what to record. |
+| 6 | `startup-interview-synthesis` | You have interview notes, replies, calls, or validation results. | Evidence summary, contradictions, signal strength, follow-ups, proceed/park/kill decision. |
+| 7 | `startup-v1-feasibility` | Evidence is strong enough to consider a small first version. | Narrow wedge, v1 mode, scope cuts, 2-4 week plan, success and rethink criteria. |
 
 The skills are designed as a chain, but each one works on its own:
 
@@ -40,6 +41,7 @@ The skills are designed as a chain, but each one works on its own:
 startup-problem-inventory
 -> startup-problem-ledger
 -> startup-problem-grilling
+-> startup-public-x-signal-scan
 -> startup-validation-test-designer
 -> startup-interview-synthesis
 -> startup-v1-feasibility
@@ -104,7 +106,21 @@ I will pressure-test problem reality, buyer urgency, budget, reachability,
 tarpit risk, timing, founder fit, and whether building is the right next move.
 ```
 
-### 4. You need a test, not a roadmap
+### 4. You need public signals before outreach
+
+```text
+You:
+$startup-public-x-signal-scan
+Scan public X signals for finance founders complaining about month-end close
+workflows before I write outreach.
+
+Agent:
+I will define source-truth boundaries, turn public posts into weak or strong
+signal classes, separate language from demand, and return validation questions
+for the next real-user test.
+```
+
+### 5. You need a test, not a roadmap
 
 ```text
 You:
@@ -117,7 +133,7 @@ I will pick the riskiest assumption, choose a small test, write non-leading
 questions or outreach, define strong and weak signals, and set kill criteria.
 ```
 
-### 5. You have evidence and need a decision
+### 6. You have evidence and need a decision
 
 ```text
 You:
@@ -129,7 +145,7 @@ I will separate behaviour from compliments, map evidence by assumption,
 surface contradictions, and recommend proceed, park, or kill.
 ```
 
-### 6. You want to build the smallest useful thing
+### 7. You want to build the smallest useful thing
 
 ```text
 You:
