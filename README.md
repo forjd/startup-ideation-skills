@@ -113,41 +113,23 @@ You can also use each skill on its own.
 
 ## Installation
 
-### Open Agent Skills layout
+Install the pack through the software you use. The same four skill folders are packaged for each supported runtime.
 
-For any agent runtime that supports the open Agent Skills directory format, use the canonical skill folders directly:
+| If you use... | Install path |
+| --- | --- |
+| OpenAI Codex | Codex plugin marketplace |
+| Claude Code | Claude Code plugin marketplace |
+| Hermes Agent | Hermes skill tap |
+| Another Agent Skills-compatible runtime | Copy or reference the `skills/` folders directly |
 
-```text
-skills/startup-problem-ledger/SKILL.md
-skills/startup-problem-grilling/SKILL.md
-skills/startup-validation-test-designer/SKILL.md
-skills/startup-v1-feasibility/SKILL.md
-```
+<details open>
+<summary><strong>OpenAI Codex</strong> - plugin marketplace</summary>
 
-### Hermes Agent
+**Prerequisites:** Codex with plugin support enabled.
 
-Add the repository as a skill tap:
+**Install:**
 
-```bash
-hermes skills tap add https://github.com/Forjd/startup-ideation-skills
-```
-
-Install the skills you want:
-
-```bash
-hermes skills install startup-problem-ledger
-hermes skills install startup-problem-grilling
-hermes skills install startup-validation-test-designer
-hermes skills install startup-v1-feasibility
-```
-
-Depending on where Hermes is running, you may need to start a new session or restart the gateway before newly installed skills are available.
-
-### OpenAI Codex
-
-This repository includes a Codex plugin manifest at `.codex-plugin/plugin.json` and a repo marketplace entry at `.agents/plugins/marketplace.json`.
-
-Add the marketplace:
+Add this repository as a Codex plugin marketplace:
 
 ```bash
 codex plugin marketplace add forjd/startup-ideation-skills
@@ -165,13 +147,37 @@ You can also browse and install it from the Codex plugin UI:
 codex /plugins
 ```
 
-Codex can then invoke the bundled skills when relevant, or you can explicitly mention them with `$startup-problem-ledger`, `$startup-problem-grilling`, `$startup-validation-test-designer`, or `$startup-v1-feasibility`.
+**Verify:**
 
-### Claude Code
+Start a new Codex session and ask for one of the skills explicitly:
 
-This repository includes a Claude Code plugin manifest at `.claude-plugin/plugin.json` and a marketplace file at `.claude-plugin/marketplace.json`.
+```text
+$startup-problem-ledger Capture this: finance teams keep rebuilding the same monthly board metrics by hand.
+```
 
-Add the marketplace:
+Codex should load the skill from this plugin. If it does not appear, restart Codex and check the plugin is installed in `/plugins`.
+
+**Use:**
+
+Mention any bundled skill by name:
+
+```text
+$startup-problem-ledger
+$startup-problem-grilling
+$startup-validation-test-designer
+$startup-v1-feasibility
+```
+
+</details>
+
+<details>
+<summary><strong>Claude Code</strong> - plugin marketplace</summary>
+
+**Prerequisites:** Claude Code with `/plugin` commands available.
+
+**Install:**
+
+Add this repository as a Claude Code plugin marketplace:
 
 ```text
 /plugin marketplace add forjd/startup-ideation-skills
@@ -183,7 +189,25 @@ Install the plugin:
 /plugin install startup-ideation-skills@startup-ideation-skills
 ```
 
-Claude Code plugin skills are namespaced by the plugin name. You can invoke them as:
+Reload plugins or restart Claude Code:
+
+```text
+/reload-plugins
+```
+
+**Verify:**
+
+Run one of the installed plugin skills:
+
+```text
+/startup-ideation-skills:startup-problem-ledger
+```
+
+If Claude Code says the command is unknown, restart Claude Code and confirm the plugin appears in the plugin list.
+
+**Use:**
+
+Claude Code plugin skills are namespaced by the plugin name:
 
 ```text
 /startup-ideation-skills:startup-problem-ledger
@@ -192,7 +216,73 @@ Claude Code plugin skills are namespaced by the plugin name. You can invoke them
 /startup-ideation-skills:startup-v1-feasibility
 ```
 
-Run `/reload-plugins` or restart Claude Code if newly installed plugin skills do not appear immediately.
+</details>
+
+<details>
+<summary><strong>Hermes Agent</strong> - skill tap</summary>
+
+**Prerequisites:** Hermes Agent with skill taps enabled.
+
+**Install:**
+
+Add this repository as a skill tap:
+
+```bash
+hermes skills tap add https://github.com/forjd/startup-ideation-skills
+```
+
+Install the skills you want:
+
+```bash
+hermes skills install startup-problem-ledger
+hermes skills install startup-problem-grilling
+hermes skills install startup-validation-test-designer
+hermes skills install startup-v1-feasibility
+```
+
+**Verify:**
+
+Start a new Hermes session and ask for one of the installed skills:
+
+```text
+Use startup-problem-ledger to capture this: customer success managers are manually reconciling renewal risk notes across tools.
+```
+
+If the skill is not found, restart the Hermes gateway or the agent session so newly installed skills are loaded.
+
+</details>
+
+<details>
+<summary><strong>Any Agent Skills-compatible runtime</strong> - direct folders</summary>
+
+**Prerequisites:** An agent runtime that can load skills from the open Agent Skills directory layout.
+
+**Install:**
+
+Clone the repository:
+
+```bash
+git clone https://github.com/forjd/startup-ideation-skills.git
+```
+
+Point your agent at the `skills/` directory, or copy only the skill folders you want into your runtime's skills directory:
+
+```text
+skills/startup-problem-ledger/SKILL.md
+skills/startup-problem-grilling/SKILL.md
+skills/startup-validation-test-designer/SKILL.md
+skills/startup-v1-feasibility/SKILL.md
+```
+
+**Verify:**
+
+Ask your agent to use one skill by its folder name:
+
+```text
+Use startup-validation-test-designer to design a one-week demand test for this idea.
+```
+
+</details>
 
 ## Example prompts
 
