@@ -1,155 +1,137 @@
 # Startup Ideation Skills
 
-Open source Agent Skills for turning startup ideas into clearer problems, validation tests, synthesized evidence, and narrow first versions.
+Evidence-first Agent Skills for turning raw startup observations into sharper problems, validation tests, interview synthesis, and narrow first versions.
 
-This repository follows the Agent Skills open standard: each skill is a directory with a `SKILL.md` file containing reusable instructions and metadata. The same skill content can be used across compatible agent runtimes, with packaging metadata included for Hermes Agent, OpenAI Codex, and Claude Code.
-
-It is for people who want an AI agent to be useful during early-stage startup thinking without becoming a hype machine. The skills push the agent to slow down, capture the pain properly, question the assumptions, design evidence-gathering tests, synthesize what was learned, and only then scope a small v1.
-
-MIT licensed. Built by Forjd.
-
-## Why this exists
-
-Most startup ideation goes wrong by jumping from a vague frustration to a product idea too quickly.
-
-The useful workflow is not:
+They are built for agents that should behave less like idea generators and more like practical founder thought partners: slow down, capture the pain, test the assumptions, and only scope a v1 when there is enough evidence.
 
 ```text
-Generate 50 startup ideas → pick the one that sounds exciting → build too much
+Observe pain -> inventory problems -> log one problem -> grill assumptions
+-> test demand -> synthesize evidence -> scope v1 or park it
 ```
 
-It is closer to:
+Built by Forjd. MIT licensed.
+
+## How To Use
+
+Install the pack in your agent, then name the skill in your prompt and paste the raw material you have. The agent loads the matching `SKILL.md` workflow and uses it to structure the session.
+
+| Runtime | Prompt style |
+| --- | --- |
+| OpenAI Codex | `$startup-problem-inventory Find startup problem candidates from my background...` |
+| Claude Code | `/startup-ideation-skills:startup-problem-inventory Find startup problem candidates...` |
+| Hermes or other Agent Skills runtimes | `Use startup-problem-inventory to find startup problem candidates...` |
+
+Start with `startup-problem-inventory` if you are still exploring. Start with `startup-problem-ledger` if you already have one concrete pain to capture.
+
+## Skill Map
+
+| Stage | Skill | Use it when... | What it returns |
+| --- | --- | --- | --- |
+| 1 | `startup-problem-inventory` | You have founder context, domain observations, customer complaints, or messy workflows and want candidates. | Problem arenas, scored candidates, best ledger picks, unknowns, evidence packet seed. |
+| 2 | `startup-problem-ledger` | You have one raw pain, annoyance, workflow gap, or early idea. | A structured problem entry, sharper problem statement, unknowns, next questions. |
+| 3 | `startup-problem-grilling` | You want to stress-test the problem before designing a test or building. | Weak assumptions, buyer map, tarpit risk, founder fit, validation moves, verdict. |
+| 4 | `startup-validation-test-designer` | You need the smallest credible demand test. | Test plan, hypothesis, target users, outreach angle, pass/fail criteria, what to record. |
+| 5 | `startup-interview-synthesis` | You have interview notes, replies, calls, or validation results. | Evidence summary, contradictions, signal strength, follow-ups, proceed/park/kill decision. |
+| 6 | `startup-v1-feasibility` | Evidence is strong enough to consider a small first version. | Narrow wedge, v1 mode, scope cuts, 2-4 week plan, success and rethink criteria. |
+
+The skills are designed as a chain, but each one works on its own:
 
 ```text
-Observe pain → log problem → sharpen problem → grill assumptions → design validation test → synthesize evidence → scope v1 → continue/kill/park
+startup-problem-inventory
+-> startup-problem-ledger
+-> startup-problem-grilling
+-> startup-validation-test-designer
+-> startup-interview-synthesis
+-> startup-v1-feasibility
 ```
 
-These skills are designed to make that second workflow easier to run in any agent that supports reusable skills.
+The chain should carry forward an evidence packet: problem statement, target user, buyer, workaround, founder advantage, recent enabling change, distribution route, expansion path, evidence collected, weakest assumptions, decision gate, and next step.
 
-They focus on practical questions:
+`startup-v1-feasibility` should return `Not build-ready` when the packet does not contain credible validation evidence from real prospects.
 
-- Who has the problem?
-- When does it happen?
-- What is the current workaround?
-- What does doing nothing cost?
-- Who pays?
-- What alternatives already exist?
-- Why now?
-- Can you reach 10 real users?
-- Can you test demand before building?
-- Could a useful v1 be built in 2–4 weeks?
+## Roleplay Scenarios
 
-## Compatibility
-
-The canonical skill format is the open Agent Skills layout:
+### 1. You have founder experience, but no clear idea
 
 ```text
-skills/<skill-name>/SKILL.md
+You:
+$startup-problem-inventory
+I spent five years running operations for boutique law firms. Teams kept
+copying client intake details between email, case management, and billing.
+
+Agent:
+I will map your unfair access first, then produce problem arenas, a scored
+inventory, the best candidates to log, the biggest unknowns, and an evidence
+packet seed for the strongest problem.
 ```
 
-This repository also includes runtime-specific packaging files so the same skills can be installed through several agent ecosystems:
-
-- Hermes Agent skill tap: `skills/`
-- skills.sh CLI: `npx skills add forjd/startup-ideation-skills` or `bunx skills add forjd/startup-ideation-skills`
-- OpenAI Codex plugin: `.codex-plugin/plugin.json`
-- OpenAI Codex repo marketplace: `.agents/plugins/marketplace.json`
-- Claude Code plugin: `.claude-plugin/plugin.json`
-- Claude Code marketplace: `.claude-plugin/marketplace.json`
-
-The skill instructions themselves are not tied to a single agent product.
-
-## Skills included
-
-### `startup-problem-ledger`
-
-Capture raw observations before they turn into premature product ideas.
-
-Use it for annoyances, repeated manual tasks, customer complaints, workflow gaps, internal inefficiencies, market oddities, or early startup ideas.
-
-It records the raw observation, context, user, job, obstacle, workaround, cost, frequency, emotional intensity, potential buyer, alternatives, and next validation step.
-
-### `startup-problem-grilling`
-
-Stress-test a captured problem.
-
-This is the anti-delusion skill. It questions the problem, buyer, budget, distribution, willingness to pay, founder-market fit, tarpit risk, and whether building is actually the right next step.
-
-It is deliberately sceptical, but not cynical. A small useful business can pass. A vague AI-shaped idea with no buyer should not.
-
-### `startup-validation-test-designer`
-
-Design the smallest credible validation test before building.
-
-It can help plan customer interviews, direct outreach, smoke tests, fake doors, demo videos, paid audits, manual services, concierge tests, and pass/fail criteria.
-
-It also blocks weak customer discovery questions such as “Would you use this?” and pushes towards evidence from real behaviour.
-
-### `startup-interview-synthesis`
-
-Turn customer interview notes, outreach replies, paid-audit conversations, and validation-test results into evidence, contradictions, signal strength, and a decision gate.
-
-It helps prevent anecdote cherry-picking by separating observed behaviour from compliments, guesses, founder interpretation, and weak intent.
-
-### `startup-v1-feasibility`
-
-Cut an idea down to a narrow wedge and a 2–4 week v1.
-
-It helps identify the smallest useful workflow, what can be manual, what should be out of scope, and what the first version needs to teach commercially.
-
-The default bias is towards boring, fast v1 modes: concierge, Wizard-of-Oz, reports, workflow wrappers, narrow automation, diagnostics, and paid pilots.
-
-## Suggested workflow
-
-Use the skills as a chain:
+### 2. You spotted one painful workflow
 
 ```text
-startup-problem-ledger
-→ startup-problem-grilling
-→ startup-validation-test-designer
-→ startup-interview-synthesis
-→ startup-v1-feasibility
+You:
+$startup-problem-ledger
+Conveyancing teams waste hours chasing inconsistent source-of-funds evidence
+from clients before exchange.
+
+Agent:
+I will capture the raw observation before turning it into a product idea:
+who feels the pain, when it happens, the workaround, frequency, cost,
+buyer, alternatives, founder advantage, and the next validation step.
 ```
 
-A typical session might look like this:
+### 3. You are getting excited and need resistance
 
-1. Capture a raw pain or idea with `startup-problem-ledger`.
-2. Challenge it with `startup-problem-grilling`.
-3. If it survives, design a test with `startup-validation-test-designer`.
-4. Synthesize the resulting interviews, replies, and commitments with `startup-interview-synthesis`.
-5. If the synthesis finds enough behavioural signal from real prospects, scope a small v1 with `startup-v1-feasibility`.
+```text
+You:
+$startup-problem-grilling
+Here is the ledger entry. Challenge it before I build anything.
 
-You can also use each skill on its own.
+Agent:
+I will pressure-test problem reality, buyer urgency, budget, reachability,
+tarpit risk, timing, founder fit, and whether building is the right next move.
+```
 
-Each step should carry forward an evidence packet with the current problem statement, target user, buyer, workaround, evidence collected, weakest assumptions, decision gate, and next step. The v1 skill should return `Not build-ready` rather than a build plan when that packet does not contain credible synthesized validation evidence.
+### 4. You need a test, not a roadmap
+
+```text
+You:
+$startup-validation-test-designer
+Design a one-week validation test. I can reach 20 operations managers on
+LinkedIn and 5 warm contacts.
+
+Agent:
+I will pick the riskiest assumption, choose a small test, write non-leading
+questions or outreach, define strong and weak signals, and set kill criteria.
+```
+
+### 5. You have evidence and need a decision
+
+```text
+You:
+$startup-interview-synthesis
+Here are notes from eight calls, three replies, and one paid audit.
+
+Agent:
+I will separate behaviour from compliments, map evidence by assumption,
+surface contradictions, and recommend proceed, park, or kill.
+```
+
+### 6. You want to build the smallest useful thing
+
+```text
+You:
+$startup-v1-feasibility
+The synthesis says proceed. Cut this down to a 2-4 week v1 with manual
+steps allowed.
+
+Agent:
+I will choose a narrow wedge, pick a boring first-version mode, cut scope,
+and return a build plan only if the evidence is strong enough.
+```
 
 ## Installation
 
-Install the pack through the software you use. The same five skill folders are packaged for each supported runtime.
-
-| If you use... | Install path |
-| --- | --- |
-| skills.sh CLI | `npx skills add ...` or `bunx skills add ...` |
-| OpenAI Codex | Codex plugin marketplace |
-| Claude Code | Claude Code plugin marketplace |
-| Hermes Agent | Hermes skill tap |
-| Another Agent Skills-compatible runtime | Copy or reference the `skills/` folders directly |
-
-<details open>
-<summary><strong>skills.sh CLI</strong> - npx or bunx</summary>
-
-**Prerequisites:** Node.js with `npx`, or Bun with `bunx`.
-
-**Inspect available skills:**
-
-```bash
-npx skills add forjd/startup-ideation-skills --list
-```
-
-```bash
-bunx skills add forjd/startup-ideation-skills --list
-```
-
-**Install all bundled skills:**
+### skills.sh
 
 ```bash
 npx skills add forjd/startup-ideation-skills --skill '*'
@@ -159,134 +141,46 @@ npx skills add forjd/startup-ideation-skills --skill '*'
 bunx skills add forjd/startup-ideation-skills --skill '*'
 ```
 
-**Install one skill:**
+Install one skill by replacing `'*'` with a skill name:
 
 ```bash
-npx skills add forjd/startup-ideation-skills --skill startup-problem-ledger
+npx skills add forjd/startup-ideation-skills --skill startup-problem-inventory
 ```
 
-```bash
-bunx skills add forjd/startup-ideation-skills --skill startup-problem-ledger
-```
+Use `-g` for a global install, or `--agent <agent-name>` to target a supported agent. Set `DISABLE_TELEMETRY=1` to opt out of skills.sh CLI telemetry.
 
-Use `-g` for a global user-level install, or `--agent <agent-name>` to target a specific supported agent. The skills.sh CLI collects anonymous install telemetry by default; set `DISABLE_TELEMETRY=1` to opt out.
-
-</details>
-
-<details>
-<summary><strong>OpenAI Codex</strong> - plugin marketplace</summary>
-
-**Prerequisites:** Codex with plugin support enabled.
-
-**Install:**
-
-Add this repository as a Codex plugin marketplace:
+### OpenAI Codex
 
 ```bash
 codex plugin marketplace add forjd/startup-ideation-skills
-```
-
-Install the plugin:
-
-```bash
 codex plugin add startup-ideation-skills@startup-ideation-skills
 ```
 
-You can also browse and install it from the Codex plugin UI:
-
-```bash
-codex /plugins
-```
-
-**Verify:**
-
-Start a new Codex session and ask for one of the skills explicitly:
+Then start a new Codex session and mention a skill by name:
 
 ```text
-$startup-problem-ledger Capture this: finance teams keep rebuilding the same monthly board metrics by hand.
+$startup-problem-inventory Help me find startup problem candidates from my experience building internal tools for finance teams.
 ```
 
-Codex should load the skill from this plugin. If it does not appear, restart Codex and check the plugin is installed in `/plugins`.
-
-**Use:**
-
-Mention any bundled skill by name:
-
-```text
-$startup-problem-ledger
-$startup-problem-grilling
-$startup-validation-test-designer
-$startup-interview-synthesis
-$startup-v1-feasibility
-```
-
-</details>
-
-<details>
-<summary><strong>Claude Code</strong> - plugin marketplace</summary>
-
-**Prerequisites:** Claude Code with `/plugin` commands available.
-
-**Install:**
-
-Add this repository as a Claude Code plugin marketplace:
+### Claude Code
 
 ```text
 /plugin marketplace add forjd/startup-ideation-skills
-```
-
-Install the plugin:
-
-```text
 /plugin install startup-ideation-skills@startup-ideation-skills
-```
-
-Reload plugins or restart Claude Code:
-
-```text
 /reload-plugins
 ```
 
-**Verify:**
-
-Run one of the installed plugin skills:
+Then call a namespaced skill:
 
 ```text
-/startup-ideation-skills:startup-problem-ledger
+/startup-ideation-skills:startup-problem-inventory
 ```
 
-If Claude Code says the command is unknown, restart Claude Code and confirm the plugin appears in the plugin list.
-
-**Use:**
-
-Claude Code plugin skills are namespaced by the plugin name:
-
-```text
-/startup-ideation-skills:startup-problem-ledger
-/startup-ideation-skills:startup-problem-grilling
-/startup-ideation-skills:startup-validation-test-designer
-/startup-ideation-skills:startup-interview-synthesis
-/startup-ideation-skills:startup-v1-feasibility
-```
-
-</details>
-
-<details>
-<summary><strong>Hermes Agent</strong> - skill tap</summary>
-
-**Prerequisites:** Hermes Agent with skill taps enabled.
-
-**Install:**
-
-Add this repository as a skill tap:
+### Hermes Agent
 
 ```bash
 hermes skills tap add https://github.com/forjd/startup-ideation-skills
-```
-
-Install the skills you want:
-
-```bash
+hermes skills install startup-problem-inventory
 hermes skills install startup-problem-ledger
 hermes skills install startup-problem-grilling
 hermes skills install startup-validation-test-designer
@@ -294,148 +188,43 @@ hermes skills install startup-interview-synthesis
 hermes skills install startup-v1-feasibility
 ```
 
-**Verify:**
+### Direct Agent Skills Layout
 
-Start a new Hermes session and ask for one of the installed skills:
-
-```text
-Use startup-problem-ledger to capture this: customer success managers are manually reconciling renewal risk notes across tools.
-```
-
-If the skill is not found, restart the Hermes gateway or the agent session so newly installed skills are loaded.
-
-</details>
-
-<details>
-<summary><strong>Any Agent Skills-compatible runtime</strong> - direct folders</summary>
-
-**Prerequisites:** An agent runtime that can load skills from the open Agent Skills directory layout.
-
-**Install:**
-
-Clone the repository:
-
-```bash
-git clone https://github.com/forjd/startup-ideation-skills.git
-```
-
-Point your agent at the `skills/` directory, or copy only the skill folders you want into your runtime's skills directory:
+The canonical format is:
 
 ```text
-skills/startup-problem-ledger/SKILL.md
-skills/startup-problem-grilling/SKILL.md
-skills/startup-validation-test-designer/SKILL.md
-skills/startup-interview-synthesis/SKILL.md
-skills/startup-v1-feasibility/SKILL.md
+skills/<skill-name>/SKILL.md
 ```
 
-**Verify:**
+Clone this repository and point any Agent Skills-compatible runtime at `skills/`, or copy only the folders you want.
 
-Ask your agent to use one skill by its folder name:
+## What This Is Not
+
+This is not a polished startup idea generator.
+
+It will not produce a long list of plausible SaaS concepts and pretend they are opportunities. The point is to help an agent inventory raw problems, identify reachable users and buyers, test demand cheaply, and avoid building the wrong thing.
+
+## Repository
 
 ```text
-Use startup-validation-test-designer to design a one-week demand test for this idea.
+skills/                         # Canonical Agent Skills
+.codex-plugin/plugin.json       # OpenAI Codex plugin manifest
+.agents/plugins/marketplace.json # OpenAI Codex repo marketplace entry
+.claude-plugin/                 # Claude Code plugin and marketplace metadata
+examples/worked-examples.md     # Example runs
+script/validate                 # Local validation
+script/release                  # Version bump, release commit, and tag helper
 ```
 
-</details>
+Useful examples:
 
-## Versioning and release pins
-
-The package version is declared in `.codex-plugin/plugin.json` and `.claude-plugin/plugin.json`, then mirrored in the marketplace manifests. Individual `SKILL.md` files intentionally do not carry top-level version fields; this keeps skill frontmatter compatible with strict Agent Skills validators.
-
-Marketplace entries are pinned to release tags such as `v0.2.0` instead of `main` so installs are reproducible. When publishing a new release, run `script/release X.Y.Z`, review the generated release commit and tag, and push both the branch and tag.
-
-## Example prompts
-
-```text
-Use startup-problem-ledger to capture this: conveyancing teams waste time chasing inconsistent source-of-funds evidence from clients.
-```
-
-```text
-Use startup-problem-grilling to challenge this problem before I build anything.
-```
-
-```text
-Use startup-validation-test-designer to create a two-week validation plan for this idea.
-```
-
-```text
-Use startup-interview-synthesis to synthesize these six customer interview notes before I decide whether to build.
-```
-
-```text
-Use startup-v1-feasibility to cut this down to a 2–4 week v1 with manual steps allowed.
-```
-
-See [worked examples](examples/worked-examples.md) for a strong B2B problem, a weak AI-shaped idea, and a sensitive-domain validation example.
-
-## What this is not
-
-This is not a startup idea generator.
-
-It will not try to produce a long list of plausible-sounding SaaS concepts. The goal is to help an agent think more like a practical founder: find a painful problem, identify a reachable user and buyer, test demand cheaply, and avoid building the wrong thing.
-
-## Repository structure
-
-```text
-.
-├── .github
-│   └── workflows
-│       └── validate.yml               # Skill and package validation
-├── .agents
-│   └── plugins
-│       └── marketplace.json          # OpenAI Codex repo marketplace entry
-├── .claude-plugin
-│   ├── marketplace.json              # Claude Code marketplace entry
-│   └── plugin.json                   # Claude Code plugin manifest
-├── .codex-plugin
-│   └── plugin.json                   # OpenAI Codex plugin manifest
-├── docs
-│   └── codex-marketplace-version-null.md
-├── examples
-│   └── worked-examples.md
-├── LICENSE
-├── README.md
-├── script
-│   ├── check_prompt_regressions.rb   # Prompt-contract fixture validation
-│   ├── release                       # Release version bump, commit, and tag helper
-│   ├── validate                      # Local validation entrypoint
-│   └── validate_skills.rb            # Repo-specific skill/package checks
-└── skills
-    ├── README.md
-    ├── startup-problem-ledger
-    │   └── SKILL.md
-    ├── startup-problem-grilling
-    │   └── SKILL.md
-    ├── startup-validation-test-designer
-    │   └── SKILL.md
-    ├── startup-interview-synthesis
-    │   └── SKILL.md
-    └── startup-v1-feasibility
-        └── SKILL.md
-```
-
-## Future ideas
-
-Possible future skills:
-
-- `startup-weekly-ideation-review` — review a ledger of ideas, validation tests, killed ideas, parked ideas, and next actions.
-- `startup-market-map` — map incumbents, point solutions, manual services, and wedge opportunities.
+- [Worked examples](examples/worked-examples.md)
+- [Skill index](skills/README.md)
+- [Codex marketplace version note](docs/codex-marketplace-version-null.md)
 
 ## Contributing
 
-Contributions are welcome.
-
-Useful contributions include:
-
-- Better question banks.
-- More examples from real founder workflows.
-- Sharper anti-patterns and tarpit checks.
-- Improvements to the validation and v1 scoping templates.
-- New skills that fit the same practical, evidence-first style.
-- Compatibility improvements for other Agent Skills runtimes.
-
-Please keep additions concrete. The goal is not more startup jargon; it is better agent behaviour.
+Good contributions make the agent more concrete, more sceptical, or more useful in real founder workflows: better question banks, sharper anti-patterns, more realistic examples, or compatibility fixes for Agent Skills runtimes.
 
 Before opening a PR or publishing a release, run:
 
@@ -443,18 +232,12 @@ Before opening a PR or publishing a release, run:
 script/validate
 ```
 
-The default validation checks whitespace, JSON manifests, skill frontmatter, skill index coverage, version consistency, release-pinned marketplace refs, and Claude plugin validation when the `claude` CLI is available.
-
-It also validates prompt regression fixtures in `tests/prompt_regressions.yml`, which capture expected output properties for weak v1 inputs, non-interview validation tests, interview synthesis, and vague AI-shaped ideas.
-
-After pushing the matching release tag, you can also run the isolated Codex install smoke test:
+For releases, update package metadata and pinned marketplace refs with:
 
 ```bash
-RUN_CODEX_INSTALL_SMOKE=1 script/validate
+script/release X.Y.Z
 ```
 
-For Codex CLI behavior around pre-install marketplace versions, see [Codex marketplace version null](docs/codex-marketplace-version-null.md).
+## License
 
-## Licence
-
-MIT © 2026 Forjd. See [LICENSE](LICENSE).
+MIT (c) 2026 Forjd. See [LICENSE](LICENSE).
