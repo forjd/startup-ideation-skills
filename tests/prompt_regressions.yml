@@ -45,6 +45,21 @@ scenarios:
       - "Do not design deceptive tests"
       - "Collect the minimum data needed"
 
+  - id: public-x-signal-scan-boundaries
+    skill: startup-public-x-signal-scan
+    prompt: "Use startup-public-x-signal-scan to inspect public X posts about finance teams complaining about month-end close workflows."
+    expected_properties:
+      must_include:
+        - "Search angles"
+        - "Evidence table"
+        - "What public X cannot prove"
+      must_avoid:
+        - "product roadmap"
+    instruction_markers:
+      - "This skill does not prove demand"
+      - "If the user wants an executable Xquik workflow"
+      - "Do not recommend v1 scoping from public X signals alone"
+
   - id: interview-synthesis-contradictions
     skill: startup-interview-synthesis
     prompt: "Use startup-interview-synthesis on notes from six finance-team interviews with mixed buyer and user signals."

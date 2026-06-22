@@ -1,7 +1,7 @@
 {
   "name": "startup-ideation-skills",
   "version": "0.2.0",
-  "description": "Evidence-first startup ideation skills for problem inventory, problem discovery, assumption grilling, validation tests, interview synthesis, and narrow v1 scoping.",
+  "description": "Evidence-first startup ideation skills for problem inventory, problem discovery, assumption grilling, public X signal scans, validation tests, interview synthesis, and narrow v1 scoping.",
   "author": {
     "name": "Forjd",
     "url": "https://github.com/forjd"
@@ -12,16 +12,17 @@
   "keywords": [
     "startup",
     "ideation",
-      "customer-discovery",
-      "interviews",
-      "validation",
-      "mvp"
+    "customer-discovery",
+    "public-signals",
+    "interviews",
+    "validation",
+    "mvp"
   ],
   "skills": "./skills/",
   "interface": {
     "displayName": "Startup Ideation Skills",
     "shortDescription": "Turn startup ideas into evidence, tests, and narrow v1 scopes.",
-    "longDescription": "A practical, evidence-first skill pack for startup ideation. Use it to inventory problem candidates, log pains, grill assumptions, design validation tests, synthesize interview evidence, and cut ideas down to a small v1 before building too much.",
+    "longDescription": "A practical, evidence-first skill pack for startup ideation. Use it to inventory problem candidates, log pains, grill assumptions, scan public signals, design validation tests, synthesize interview evidence, and cut ideas down to a small v1 before building too much.",
     "developerName": "Forjd",
     "category": "Productivity",
     "capabilities": [
@@ -32,6 +33,7 @@
       "Use startup-problem-inventory to generate startup problem candidates from my founder experience.",
       "Use startup-problem-ledger to capture a raw startup pain.",
       "Use startup-problem-grilling to challenge this idea before I build anything.",
+      "Use startup-public-x-signal-scan to turn public X posts into evidence limits and validation next steps.",
       "Use startup-validation-test-designer to create a small validation test.",
       "Use startup-interview-synthesis to synthesize customer interview notes.",
       "Use startup-v1-feasibility to cut this down to a 2-4 week v1."
