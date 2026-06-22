@@ -49,6 +49,19 @@ The chain should carry forward an evidence packet: problem statement, target use
 
 `startup-v1-feasibility` should return `Not build-ready` when the packet does not contain credible validation evidence from real prospects.
 
+## HTML Artifacts
+
+Markdown in chat remains the default output. Each skill can also create a formatted single-file HTML artifact when you ask for an artifact, report, visual summary, printable version, or single-file HTML file.
+
+Example prompt:
+
+```text
+$startup-interview-synthesis
+Synthesize these validation notes and also create a single-file HTML artifact.
+```
+
+The HTML artifact should be self-contained, use inline CSS only, preserve the same evidence and recommendations as the Markdown output, include a source skill/date footer, and be designed for quick visual review or printing.
+
 ## Roleplay Scenarios
 
 ### 1. You have founder experience, but no clear idea

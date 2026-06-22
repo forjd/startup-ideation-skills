@@ -15,6 +15,8 @@ Use `startup-problem-inventory` when the user is still searching for promising p
 
 Each skill should carry forward the shared evidence packet. Do not use v1 feasibility as a build-plan shortcut unless the packet contains credible synthesized validation evidence from real prospects.
 
+Markdown chat output is the default. Any skill can also create a formatted single-file HTML artifact when the user asks for an artifact, report, visual summary, printable version, or single-file HTML file. The artifact should be self-contained, preserve the same evidence and recommendations, and use inline CSS only.
+
 - [`startup-problem-inventory`](startup-problem-inventory/SKILL.md) generates raw problem candidates from founder unfair access, domain observations, and recent enabling changes.
 - [`startup-problem-ledger`](startup-problem-ledger/SKILL.md) captures raw pains before they become premature product ideas.
 - [`startup-problem-grilling`](startup-problem-grilling/SKILL.md) stress-tests the problem, buyer, reachability, and willingness to pay.

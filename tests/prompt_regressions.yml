@@ -74,3 +74,17 @@ scenarios:
       - "Only compelling because AI is fashionable"
       - "Do not become a cheerleader"
       - "Ask only the 3–5 missing questions"
+
+  - id: html-artifact-option
+    skill: startup-problem-ledger
+    prompt: "Use startup-problem-ledger to capture this raw pain and create a single-file HTML artifact."
+    expected_properties:
+      must_include:
+        - "Problem ledger entry"
+        - "single-file HTML"
+      must_avoid:
+        - "external assets"
+    instruction_markers:
+      - "Optional HTML artifact"
+      - "single-file HTML file"
+      - "HTML-escape user-provided text"

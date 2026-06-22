@@ -1,6 +1,6 @@
 ---
 name: startup-interview-synthesis
-description: Synthesize startup customer interview notes, outreach replies, validation calls, and test results into evidence, contradictions, signal strength, and a proceed/park/kill recommendation before v1 scoping.
+description: Synthesize startup customer interview notes, outreach replies, validation calls, and test results into evidence, contradictions, signal strength, and a proceed/park/kill recommendation before v1 scoping, with optional formatted single-file HTML artifact output.
 license: MIT
 metadata:
   display_name: Startup Interview Synthesis
@@ -81,6 +81,20 @@ Mixed signals:
 - Do not treat one enthusiastic outlier as market proof.
 - Do not ignore non-users who control budget, risk, compliance, IT, procurement, or adoption.
 - Do not convert a privacy, security, legal, or regulatory concern into a mere product objection.
+
+## Optional HTML artifact
+
+Default to the Markdown chat output below. If the user asks for an artifact, report, visual summary, printable version, or single-file HTML file, also create a standalone `.html` file when filesystem access is available.
+
+For the HTML artifact:
+
+- Use one self-contained file with inline CSS only; do not depend on external assets, fonts, scripts, CDNs, or network access.
+- Preserve the same section order, evidence, scores or ratings when present, and recommendations as the Markdown output; do not add new claims for visual polish.
+- Design for skimming: title, stage, decision/status badge when applicable, key scores or ratings, tables, callouts for risks, unknowns, and next steps, and a print-friendly layout.
+- HTML-escape user-provided text and do not execute or embed user-provided HTML or script.
+- Include the source skill name and generation date in small footer text.
+- Name the file with the stage and date, such as `startup-interview-synthesis-YYYY-MM-DD.html`.
+- In chat, keep a short summary and link to the created HTML file. If file writing is not available, provide the complete HTML in a fenced `html` block.
 
 ## Output format
 

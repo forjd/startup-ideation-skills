@@ -1,6 +1,6 @@
 ---
 name: startup-problem-grilling
-description: Stress-test a captured startup problem with sharp questions before validation or product scoping.
+description: Stress-test a captured startup problem with sharp questions before validation or product scoping, with optional formatted single-file HTML artifact output.
 license: MIT
 metadata:
   display_name: Startup Problem Grilling
@@ -197,6 +197,20 @@ Treat `45-55` as serious, `35-44` as worth deeper discovery, `25-34` as needing 
 - Can the first version be concierge/manual behind the scenes?
 - What can be faked, scripted, or done with off-the-shelf tools?
 - What must be true for a 2–4 week build to be meaningful?
+
+## Optional HTML artifact
+
+Default to the Markdown chat output below. If the user asks for an artifact, report, visual summary, printable version, or single-file HTML file, also create a standalone `.html` file when filesystem access is available.
+
+For the HTML artifact:
+
+- Use one self-contained file with inline CSS only; do not depend on external assets, fonts, scripts, CDNs, or network access.
+- Preserve the same section order, evidence, scores or ratings when present, and recommendations as the Markdown output; do not add new claims for visual polish.
+- Design for skimming: title, stage, decision/status badge when applicable, key scores or ratings, tables, callouts for risks, unknowns, and next steps, and a print-friendly layout.
+- HTML-escape user-provided text and do not execute or embed user-provided HTML or script.
+- Include the source skill name and generation date in small footer text.
+- Name the file with the stage and date, such as `startup-problem-grilling-YYYY-MM-DD.html`.
+- In chat, keep a short summary and link to the created HTML file. If file writing is not available, provide the complete HTML in a fenced `html` block.
 
 ## Output format
 

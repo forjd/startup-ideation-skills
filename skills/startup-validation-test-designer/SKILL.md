@@ -1,6 +1,6 @@
 ---
 name: startup-validation-test-designer
-description: Design small credible demand tests, interviews, smoke tests, and kill criteria before building a startup v1.
+description: Design small credible demand tests, interviews, smoke tests, and kill criteria before building a startup v1, with optional formatted single-file HTML artifact output.
 license: MIT
 metadata:
   display_name: Startup Validation Test Designer
@@ -107,6 +107,20 @@ Keep outreach focused on the pain, not the imagined product.
 - Get permission before recording calls, using quotes, or sharing identifiable customer details.
 - For paid audits, manual services, pilots, and concierge tests, make the scope, human involvement, limitations, and refund or cancellation terms clear.
 - For regulated or high-risk domains, include a risk check and recommend domain/legal review before outreach, data collection, or paid testing.
+
+## Optional HTML artifact
+
+Default to the Markdown chat output below. If the user asks for an artifact, report, visual summary, printable version, or single-file HTML file, also create a standalone `.html` file when filesystem access is available.
+
+For the HTML artifact:
+
+- Use one self-contained file with inline CSS only; do not depend on external assets, fonts, scripts, CDNs, or network access.
+- Preserve the same section order, evidence, scores or ratings when present, and recommendations as the Markdown output; do not add new claims for visual polish.
+- Design for skimming: title, stage, decision/status badge when applicable, key scores or ratings, tables, callouts for risks, unknowns, and next steps, and a print-friendly layout.
+- HTML-escape user-provided text and do not execute or embed user-provided HTML or script.
+- Include the source skill name and generation date in small footer text.
+- Name the file with the stage and date, such as `startup-validation-test-YYYY-MM-DD.html`.
+- In chat, keep a short summary and link to the created HTML file. If file writing is not available, provide the complete HTML in a fenced `html` block.
 
 ## Output format
 
