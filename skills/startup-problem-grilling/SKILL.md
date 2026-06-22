@@ -38,6 +38,9 @@ Frequency:
 Potential buyer:
 Existing tools/alternatives:
 Why now:
+Founder advantage:
+Distribution route:
+Expansion path:
 Could I reach 10 users:
 Could I build v1 in 2–4 weeks:
 ```
@@ -49,10 +52,11 @@ Could I build v1 in 2–4 weeks:
 3. Map user, buyer, blocker, budget owner, and risk owner.
 4. Check tarpit risk and whether distribution may be harder than product.
 5. Challenge pricing and willingness-to-pay early.
-6. Score founder-market fit against the user's actual advantages.
-7. Suggest small validation moves that do not require building the full product.
-8. End with a verdict: `Promising`, `Needs narrowing`, `Weak until proven`, or `Probably not worth building yet`.
-9. Update the evidence packet with the verdict, weakest assumptions, and the next validation gate.
+6. Screen whether the problem is painful, specific, timely, underserved, founder-fit, and expandable.
+7. Score founder-market fit against the user's actual advantages.
+8. Suggest small validation moves that do not require building the full product.
+9. End with a verdict: `Promising`, `Needs narrowing`, `Weak until proven`, or `Probably not worth building yet`.
+10. Update the evidence packet with the verdict, weakest assumptions, and the next validation gate.
 
 ## Question bank
 
@@ -126,6 +130,22 @@ Rate tarpit risk as `Low`, `Medium`, or `High`, and say why.
 - Why now?
 - What changed in regulation, technology, behaviour, cost pressure, AI capability, or market structure?
 - Is this a new problem, or an old problem with a newly cheap solution?
+- What would make the same solution impossible, too expensive, or poorly timed 3-5 years ago?
+
+### Opportunity shape
+
+Check whether the candidate has all six properties:
+
+```markdown
+Painful:
+Specific:
+Timely:
+Underserved:
+Founder-fit:
+Expandable:
+```
+
+If one is weak, say how to narrow or retest. If several are unknown, the next step is discovery, not product scoping.
 
 ### Pricing and willingness to pay
 
@@ -150,6 +170,26 @@ Can test demand before building: /3
 ```
 
 Use the score as a thinking aid, not false precision.
+
+### Opportunity score
+
+Use this 0-5 score only when comparing multiple candidates or when the user asks which idea deserves focus:
+
+```markdown
+Pain intensity:
+Frequency:
+Existing spend:
+Reachable ICP:
+Founder fit:
+Timing:
+Competition gap:
+Wedge:
+Expansion:
+Validation speed:
+Distribution:
+```
+
+Treat `45-55` as serious, `35-44` as worth deeper discovery, `25-34` as needing sharper narrowing, and below `25` as a park signal unless real buyer evidence says otherwise.
 
 ### V1 feasibility
 
@@ -192,6 +232,17 @@ Score: .../24
 
 Biggest gap: ...
 
+## Opportunity shape
+
+Painful: ...
+Specific: ...
+Timely: ...
+Underserved: ...
+Founder-fit: ...
+Expandable: ...
+
+Opportunity score: .../55
+
 ## Grilling questions
 
 ### Problem risk
@@ -225,6 +276,10 @@ Problem statement: ...
 Target user: ...
 Buyer / budget owner: ...
 Current workaround: ...
+Founder advantage: ...
+Recent enabling change: ...
+Distribution route: ...
+Expansion path: ...
 Evidence collected: ...
 Weakest assumptions: ...
 Decision gate: [Ready to design validation / Needs narrowing / Park / Kill]

@@ -3,15 +3,19 @@
 Use these skills as an evidence-first chain:
 
 ```text
-startup-problem-ledger
+startup-problem-inventory
+-> startup-problem-ledger
 -> startup-problem-grilling
 -> startup-validation-test-designer
 -> startup-interview-synthesis
 -> startup-v1-feasibility
 ```
 
+Use `startup-problem-inventory` when the user is still searching for promising problem candidates. Use `startup-problem-ledger` once there is a specific raw pain to capture.
+
 Each skill should carry forward the shared evidence packet. Do not use v1 feasibility as a build-plan shortcut unless the packet contains credible synthesized validation evidence from real prospects.
 
+- [`startup-problem-inventory`](startup-problem-inventory/SKILL.md) generates raw problem candidates from founder unfair access, domain observations, and recent enabling changes.
 - [`startup-problem-ledger`](startup-problem-ledger/SKILL.md) captures raw pains before they become premature product ideas.
 - [`startup-problem-grilling`](startup-problem-grilling/SKILL.md) stress-tests the problem, buyer, reachability, and willingness to pay.
 - [`startup-validation-test-designer`](startup-validation-test-designer/SKILL.md) designs small tests with explicit pass/fail criteria.

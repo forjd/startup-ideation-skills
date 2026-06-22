@@ -1,4 +1,20 @@
 scenarios:
+  - id: inventory-from-founder-context
+    skill: startup-problem-inventory
+    prompt: "Use startup-problem-inventory to find startup ideas from my experience as a web developer who has worked on ecommerce and internal tools."
+    expected_properties:
+      must_include:
+        - "Idea arenas"
+        - "Problem inventory"
+        - "Best ledger candidates"
+        - "Evidence packet seed"
+      must_avoid:
+        - "polished product roadmap"
+    instruction_markers:
+      - "Do not produce a list of polished product ideas by default"
+      - "painful, specific, timely, underserved, founder-fit, and expandable"
+      - "Strong candidate = painful problem + specific customer + founder insight + recent enabling change + cheap validation path + expansion option"
+
   - id: weak-unvalidated-v1
     skill: startup-v1-feasibility
     prompt: "Use startup-v1-feasibility for an AI app idea with no interviews or validation yet."

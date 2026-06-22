@@ -28,10 +28,11 @@ Keep the user anchored on the pain, the person feeling it, the moment it happens
 2. Fill the problem ledger using only known information.
 3. Mark unknowns as `Unknown`, not guessed facts.
 4. Sharpen the vague pain into one or more specific problem statements.
-5. Ask only the highest-value missing questions first. Prefer 3–5 questions, not a giant form.
-6. Decide whether the entry is `Startup-shaped`, `Unclear`, or `Probably not`.
-7. Suggest the next validation step, not a product roadmap.
-8. Produce or update the shared evidence packet so later skills inherit the same facts, unknowns, and decision gate.
+5. Screen for whether the problem is painful, specific, timely, underserved, founder-fit, and expandable.
+6. Ask only the highest-value missing questions first. Prefer 3–5 questions, not a giant form.
+7. Decide whether the entry is `Startup-shaped`, `Unclear`, or `Probably not`.
+8. Suggest the next validation step, not a product roadmap.
+9. Produce or update the shared evidence packet so later skills inherit the same facts, unknowns, and decision gate.
 
 ## Problem ledger
 
@@ -53,11 +54,29 @@ Emotional intensity:
 Potential buyer:
 Existing tools/alternatives:
 Why now:
+Founder advantage:
+Distribution route:
+Expansion path:
 Could I reach 10 users:
 Could I build v1 in 2–4 weeks:
 Startup-shaped: yes/no/unclear
 Next validation step:
 ```
+
+## Opportunity screen
+
+Check these properties before calling something startup-shaped:
+
+```markdown
+Painful: expensive, frequent, embarrassing, risky, or intensely annoying.
+Specific: exact customer and exact situation are nameable.
+Timely: a recent change makes solving it newly possible or urgent.
+Underserved: alternatives are absent, bloated, expensive, slow, or misaligned.
+Founder-fit: the founder has relevant skill, access, credibility, or obsession.
+Expandable: the first niche can grow into adjacent workflows, budgets, or markets.
+```
+
+If more than two properties are `Unknown`, keep the entry as `Unclear` and ask the smallest set of questions needed to improve the screen.
 
 ## Pain sharpener
 
@@ -87,6 +106,8 @@ Use plain, direct questions such as:
 - Who has budget or authority to pay for a fix?
 - What tools, agencies, spreadsheets, scripts, or internal processes already compete with this?
 - Why is this more urgent now than two years ago?
+- What founder advantage makes this problem easier to notice, understand, reach, or solve?
+- If the first niche worked, what adjacent workflow, buyer, or budget could it expand into?
 - Could you realistically speak to 10 people with this problem in the next fortnight?
 - Could a v1 prove value in 2–4 weeks without building a platform?
 
@@ -110,6 +131,9 @@ Emotional intensity: ...
 Potential buyer: ...
 Existing tools/alternatives: ...
 Why now: ...
+Founder advantage: ...
+Distribution route: ...
+Expansion path: ...
 Could I reach 10 users: ...
 Could I build v1 in 2–4 weeks: ...
 Startup-shaped: yes/no/unclear
@@ -138,6 +162,10 @@ Problem statement: ...
 Target user: ...
 Buyer / budget owner: ...
 Current workaround: ...
+Founder advantage: ...
+Recent enabling change: ...
+Distribution route: ...
+Expansion path: ...
 Evidence collected: ...
 Weakest assumptions: ...
 Decision gate: [Ready to grill / Needs more problem detail / Park]
@@ -153,6 +181,7 @@ A ledger entry is good enough to grill when:
 - The current workaround is known or explicitly unknown.
 - The cost is plausible and testable.
 - There is a credible buyer or a clear reason the buyer is not yet known.
+- Founder advantage, timing, and reachability are known or explicitly unknown.
 - The next validation step can happen before a full build.
 
 ## Pitfalls

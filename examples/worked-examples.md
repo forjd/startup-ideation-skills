@@ -2,6 +2,35 @@
 
 These examples show the expected evidence-first style. They are intentionally short; real sessions should preserve more exact customer notes and quotes.
 
+## Inventory Before Ledger
+
+Founder context:
+
+```text
+I am a web developer who has built Shopify sites, internal dashboards, and client reporting tools for small agencies.
+```
+
+Good inventory direction:
+
+```markdown
+Idea arenas:
+1. Shopify agency operations
+2. Client reporting and analytics trust
+3. Internal tools for service businesses
+
+Problem inventory:
+
+| Candidate | Customer | Situation | Workaround | Why now | Founder advantage | First validation |
+| --- | --- | --- | --- | --- | --- | --- |
+| Conversion tracking breaks after theme/app changes | Shopify agencies managing 20-100 stores | Client reports are wrong after app or theme edits | Manual QA, GA4 checks, spreadsheets | More storefront apps, privacy changes, brittle attribution | Built stores and understands tracking breakage | Ask 15 agencies for recent breakage examples and offer a manual audit |
+| Retainer clients do not trust monthly reports | Small web agencies | Reporting meetings expose unexplained metric changes | Export screenshots, manual annotations | AI/browser automation can inspect more sources cheaply | Has built dashboards and client reports | Send a sample annotated report to 10 agency owners |
+```
+
+Good next step:
+
+- Pick the highest pain candidate and use `startup-problem-ledger`.
+- Do not turn the whole inventory into a product roadmap.
+
 ## Strong B2B Problem
 
 Raw observation:
@@ -17,6 +46,10 @@ Problem statement: For finance leads at 80-300 person SaaS companies, month-end 
 Target user: Head of Finance / FP&A lead
 Buyer / budget owner: CFO or VP Finance
 Current workaround: Spreadsheet exports, SQL pulls, manual checks, analyst time
+Founder advantage: Has built internal reporting tools and understands revenue/CRM data joins
+Recent enabling change: Warehouse adoption and automation make a narrow diagnostic cheaper to deliver
+Distribution route: Direct outreach to finance leads in 80-300 person SaaS companies
+Expansion path: Start with monthly board metrics, then expand into metric definitions, audit trails, and forecast inputs
 Evidence collected: Three finance leads described monthly pain; two already pay consultants or analysts to clean the data.
 Weakest assumptions: Willingness to pay for a narrow diagnostic; access to enough source data; trust in automated calculations.
 Decision gate: Ready to design validation

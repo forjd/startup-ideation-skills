@@ -32,6 +32,9 @@ Current workaround:
 Riskiest assumption:
 What the user can build or deliver manually:
 Existing network or channels:
+Founder advantage:
+Recent enabling change:
+Distribution route:
 ```
 
 ## Workflow
@@ -41,9 +44,10 @@ Existing network or channels:
 3. Define the exact behaviour that would count as evidence.
 4. Write non-leading interview questions if interviews are part of the test.
 5. Define the target list and outreach angle.
-6. Set success, failure, and kill criteria before the test runs.
-7. Keep the test timeboxed. Default to 48 hours to 2 weeks.
-8. End with a clear evidence gate for whether v1 scoping is justified after the test.
+6. Tie the test to why the problem is urgent or newly solvable now.
+7. Set success, failure, and kill criteria before the test runs.
+8. Keep the test timeboxed. Default to 48 hours to 2 weeks.
+9. End with a clear evidence gate for whether v1 scoping is justified after the test.
 
 ## Test types
 
@@ -121,6 +125,8 @@ Why this test: ...
 
 People will [do specific behaviour] because [pain/current cost].
 
+Why now: ...
+
 ## Target users
 
 - ...
@@ -150,6 +156,8 @@ Include this section only when the recommended test needs a landing-page message
 
 ...
 
+Distribution route: ...
+
 ## Success criteria
 
 Proceed if:
@@ -167,6 +175,8 @@ Kill/rethink if:
 - Frequency
 - Cost
 - Buyer/budget signal
+- Behavioural commitment
+- Why-now signal
 - Objections
 - Follow-up commitment
 
@@ -177,6 +187,10 @@ Problem statement: ...
 Target user: ...
 Buyer / budget owner: ...
 Current workaround: ...
+Founder advantage: ...
+Recent enabling change: ...
+Distribution route: ...
+Expansion path: ...
 Evidence to collect: ...
 Weakest assumptions: ...
 Decision gate: [Ready to run test / Needs narrower test / Park]
