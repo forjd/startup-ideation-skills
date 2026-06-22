@@ -55,6 +55,9 @@ skill_dirs.each do |skill_dir|
   skill_md = skill_dir.join("SKILL.md")
   fail!("missing #{skill_md.relative_path_from(ROOT)}") unless skill_md.file?
 
+  skill_text = skill_md.read
+  fail!("#{skill_md.relative_path_from(ROOT)} still contains a TODO placeholder") if skill_text.include?("TODO")
+
   metadata = frontmatter_for(skill_md)
   fail!("#{skill_md.relative_path_from(ROOT)} frontmatter must be a mapping") unless metadata.is_a?(Hash)
 

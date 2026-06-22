@@ -1,0 +1,78 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "json"
+require "pathname"
+
+ROOT = Pathname.new(__dir__).parent
+Dir.chdir(ROOT)
+
+def fail!(message)
+  warn "Release failed: #{message}"
+  exit 1
+end
+
+version = ARGV.fetch(0, nil)
+fail!("usage: script/release X.Y.Z") unless version
+fail!("version must be semver like 1.2.3") unless version.match?(/\A\d+\.\d+\.\d+\z/)
+
+status = `git status --porcelain`
+fail!("working tree must be clean before release") unless status.empty?
+
+tag = "v#{version}"
+fail!("tag #{tag} already exists locally") if system("git", "rev-parse", "-q", "--verify", "refs/tags/#{tag}", out: File::NULL, err: File::NULL)
+fail!("tag #{tag} already exists on origin") if system("git", "ls-remote", "--exit-code", "--tags", "origin", tag, out: File::NULL, err: File::NULL)
+
+def update_json(relative_path)
+  path = ROOT.join(relative_path)
+  data = JSON.parse(path.read)
+  yield data
+  path.write(JSON.pretty_generate(data) + "\n")
+end
+
+update_json(".codex-plugin/plugin.json") do |data|
+  data["version"] = version
+end
+
+update_json(".claude-plugin/plugin.json") do |data|
+  data["version"] = version
+end
+
+update_json(".agents/plugins/marketplace.json") do |data|
+  plugin = data.fetch("plugins").fetch(0)
+  plugin["version"] = version
+  plugin.fetch("source")["ref"] = tag
+end
+
+update_json(".claude-plugin/marketplace.json") do |data|
+  plugin = data.fetch("plugins").fetch(0)
+  plugin["version"] = version
+  plugin.fetch("source")["ref"] = tag
+end
+
+versioned_docs = [
+  "README.md",
+  "docs/codex-marketplace-version-null.md",
+]
+
+versioned_docs.each do |relative_path|
+  path = ROOT.join(relative_path)
+  next unless path.file?
+
+  content = path.read
+  content = content.gsub(/v\d+\.\d+\.\d+/, tag)
+  content = content.gsub(/"version": "\d+\.\d+\.\d+"/, %("version": "#{version}"))
+  path.write(content)
+end
+
+system("script/validate") || fail!("validation failed")
+system("git", "add", ".codex-plugin/plugin.json", ".claude-plugin/plugin.json", ".agents/plugins/marketplace.json", ".claude-plugin/marketplace.json", *versioned_docs) || fail!("git add failed")
+system("git", "diff", "--cached", "--quiet") && fail!("no release changes to commit")
+system("git", "diff", "--cached", "--check") || fail!("staged diff check failed")
+system("git", "commit", "-m", "Release #{tag}") || fail!("commit failed")
+system("git", "tag", "-a", tag, "-m", "startup-ideation-skills #{tag}") || fail!("tag failed")
+
+puts
+puts "Release commit and tag created."
+puts "Push with:"
+puts "  git push origin main && git push origin #{tag}"

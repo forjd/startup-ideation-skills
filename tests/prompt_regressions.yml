@@ -1,0 +1,60 @@
+scenarios:
+  - id: weak-unvalidated-v1
+    skill: startup-v1-feasibility
+    prompt: "Use startup-v1-feasibility for an AI app idea with no interviews or validation yet."
+    expected_properties:
+      must_include:
+        - "Not build-ready"
+        - "Missing evidence"
+        - "Next validation move"
+      must_avoid_when_gate_fails:
+        - "2-4 week build plan"
+    instruction_markers:
+      - "If the user has not run a validation test"
+      - "do not produce a build plan by default"
+      - "When the evidence gate fails"
+
+  - id: non-interview-fake-door-test
+    skill: startup-validation-test-designer
+    prompt: "Use startup-validation-test-designer to design a fake-door test for accountants who might want a month-end checklist product."
+    expected_properties:
+      must_include:
+        - "Test asset or script"
+        - "Success criteria"
+        - "Kill or rethink criteria"
+      must_avoid_when_not_applicable:
+        - "forced interview questions"
+    instruction_markers:
+      - "Include this section only when interviews are part of the recommended test"
+      - "Do not design deceptive tests"
+      - "Collect the minimum data needed"
+
+  - id: interview-synthesis-contradictions
+    skill: startup-interview-synthesis
+    prompt: "Use startup-interview-synthesis on notes from six finance-team interviews with mixed buyer and user signals."
+    expected_properties:
+      must_include:
+        - "Contradictions"
+        - "Signal by assumption"
+        - "Evidence packet update"
+      must_avoid:
+        - "polite interest as validation"
+    instruction_markers:
+      - "Treat contradictions as useful evidence"
+      - "Separate observed behaviour from opinion"
+      - "Do not recommend v1 scoping unless behaviour and commitments justify it"
+
+  - id: vague-ai-grilling
+    skill: startup-problem-grilling
+    prompt: "Use startup-problem-grilling to challenge a vague AI agent for all small businesses."
+    expected_properties:
+      must_include:
+        - "Weakest assumptions"
+        - "Tarpit risk"
+        - "Verdict"
+      must_avoid:
+        - "cheerleading"
+    instruction_markers:
+      - "Only compelling because AI is fashionable"
+      - "Do not become a cheerleader"
+      - "Ask only the 3–5 missing questions"

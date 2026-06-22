@@ -13,6 +13,7 @@ jq -e . \
   >/dev/null
 
 ruby script/validate_skills.rb
+ruby script/check_prompt_regressions.rb
 
 if command -v claude >/dev/null 2>&1; then
   claude plugin validate --strict .
