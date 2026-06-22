@@ -1,12 +1,9 @@
 ---
 name: startup-problem-grilling
-title: Startup Problem Grilling
 description: Stress-test a captured startup problem with sharp questions before validation or product scoping.
-version: 0.2.0
-author: Forjd
 license: MIT
-platforms: [linux, macos, windows]
 metadata:
+  display_name: Startup Problem Grilling
   hermes:
     tags: [startup, ideation, validation, customer-discovery, critique, tarpit]
     category: business
@@ -27,7 +24,9 @@ Be direct, practical, and specific. Question the problem, buyer, urgency, reacha
 
 ## Inputs to request if missing
 
-Ask for the problem ledger if it is not already in context:
+Use the evidence packet or problem ledger if it is already in context. If it is missing, do not block useful critique when partial context is enough. Ask only the 3–5 missing questions that would most change the verdict.
+
+Use this full ledger shape when the user wants a formal handoff from the problem ledger:
 
 ```markdown
 Problem:
@@ -53,6 +52,7 @@ Could I build v1 in 2–4 weeks:
 6. Score founder-market fit against the user's actual advantages.
 7. Suggest small validation moves that do not require building the full product.
 8. End with a verdict: `Promising`, `Needs narrowing`, `Weak until proven`, or `Probably not worth building yet`.
+9. Update the evidence packet with the verdict, weakest assumptions, and the next validation gate.
 
 ## Question bank
 
@@ -217,6 +217,18 @@ Biggest gap: ...
 [Promising / Needs narrowing / Weak until proven / Probably not worth building yet]
 
 Because: ...
+
+## Evidence packet update
+
+Stage: Problem grilled
+Problem statement: ...
+Target user: ...
+Buyer / budget owner: ...
+Current workaround: ...
+Evidence collected: ...
+Weakest assumptions: ...
+Decision gate: [Ready to design validation / Needs narrowing / Park / Kill]
+Next step: ...
 ```
 
 ## Pitfalls

@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+cd "$(dirname "$0")/.."
+
+git diff --check
+
+jq -e . \
+  .codex-plugin/plugin.json \
+  .agents/plugins/marketplace.json \
+  .claude-plugin/plugin.json \
+  .claude-plugin/marketplace.json \
+  >/dev/null
+
+ruby script/validate_skills.rb
+
+if command -v claude >/dev/null 2>&1; then
+  claude plugin validate --strict .
+else
+  echo "Skipping Claude plugin validation: claude CLI not found"
+fi
+
+if [[ "${RUN_CODEX_INSTALL_SMOKE:-}" == "1" ]]; then
+  if ! command -v codex >/dev/null 2>&1; then
+    echo "RUN_CODEX_INSTALL_SMOKE=1 set, but codex CLI not found" >&2
+    exit 1
+  fi
+
+  tmp="$(mktemp -d)"
+  trap 'rm -rf "$tmp"' EXIT
+
+  CODEX_HOME="$tmp" codex plugin marketplace add . --json >/dev/null
+  CODEX_HOME="$tmp" codex plugin list --available --json >/dev/null
+  CODEX_HOME="$tmp" codex plugin add startup-ideation-skills@startup-ideation-skills --json >/dev/null
+fi
+
+echo "Validation passed"

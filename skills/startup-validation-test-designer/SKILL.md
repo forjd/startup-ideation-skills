@@ -1,12 +1,9 @@
 ---
 name: startup-validation-test-designer
-title: Startup Validation Test Designer
 description: Design small credible demand tests, interviews, smoke tests, and kill criteria before building a startup v1.
-version: 0.1.0
-author: Forjd
 license: MIT
-platforms: [linux, macos, windows]
 metadata:
+  display_name: Startup Validation Test Designer
   hermes:
     tags: [startup, validation, customer-interviews, smoke-tests, demand-testing]
     category: business
@@ -46,6 +43,7 @@ Existing network or channels:
 5. Define the target list and outreach angle.
 6. Set success, failure, and kill criteria before the test runs.
 7. Keep the test timeboxed. Default to 48 hours to 2 weeks.
+8. End with a clear evidence gate for whether v1 scoping is justified after the test.
 
 ## Test types
 
@@ -98,6 +96,14 @@ Follow-up plan:
 
 Keep outreach focused on the pain, not the imagined product.
 
+## Ethics, privacy, and sensitive-domain guardrails
+
+- Do not design deceptive tests. A fake door can test demand, but it must not claim a product, credential, endorsement, price, or delivery date that is not real.
+- Collect the minimum data needed to answer the validation question. Avoid unnecessary personal, health, financial, legal, employment, child-related, or similarly sensitive data.
+- Get permission before recording calls, using quotes, or sharing identifiable customer details.
+- For paid audits, manual services, pilots, and concierge tests, make the scope, human involvement, limitations, and refund or cancellation terms clear.
+- For regulated or high-risk domains, include a risk check and recommend domain/legal review before outreach, data collection, or paid testing.
+
 ## Output format
 
 ```markdown
@@ -128,9 +134,17 @@ Timebox: ...
 
 ## Interview questions
 
+Include this section only when interviews are part of the recommended test.
+
 1. ...
 2. ...
 3. ...
+
+## Test asset or script
+
+Include this section only when the recommended test needs a landing-page message, fake-door copy, demo-video outline, audit offer, manual-service script, or concierge workflow.
+
+...
 
 ## Outreach angle
 
@@ -155,6 +169,19 @@ Kill/rethink if:
 - Buyer/budget signal
 - Objections
 - Follow-up commitment
+
+## Evidence packet update
+
+Stage: Validation test designed
+Problem statement: ...
+Target user: ...
+Buyer / budget owner: ...
+Current workaround: ...
+Evidence to collect: ...
+Weakest assumptions: ...
+Decision gate: [Ready to run test / Needs narrower test / Park]
+V1 gate: Do not scope a build until the test produces the success criteria above.
+Next step: ...
 ```
 
 ## Strong signals

@@ -1,12 +1,9 @@
 ---
 name: startup-v1-feasibility
-title: Startup V1 Feasibility
 description: Scope a startup idea into a narrow wedge and 2–4 week v1 that tests the riskiest assumption.
-version: 0.2.0
-author: Forjd
 license: MIT
-platforms: [linux, macos, windows]
 metadata:
+  display_name: Startup V1 Feasibility
   hermes:
     tags: [startup, v1, mvp, feasibility, validation, product-scope, wedge]
     category: business
@@ -17,9 +14,11 @@ metadata:
 
 ## When to use
 
-Use when a captured, grilled, and preferably tested startup problem looks worth building against, and the user wants to decide what to build first.
+Use when a captured, grilled, and validated startup problem has enough evidence to justify deciding what to build first.
 
 This skill prevents v1 scope creep. The first version should test the riskiest useful assumption, not become a miniature version of the imagined company.
+
+If the user has not run a validation test or cannot provide credible evidence from real prospects, do not produce a build plan by default. Return a `Not build-ready` verdict, list the missing evidence, and route them back to validation. Only produce a planning-only sketch when the user explicitly asks for a hypothetical plan and label it as unvalidated.
 
 ## Core principle
 
@@ -27,15 +26,21 @@ A good v1 is small enough to build in 2–4 weeks and sharp enough that real use
 
 ## Workflow
 
-1. Start from the problem ledger, grilling notes, and validation results if available.
-2. Identify the narrow wedge: the painful sliver where a first product can deliver value.
-3. Identify the riskiest assumption that building can test.
-4. Choose a v1 mode: manual concierge, Wizard-of-Oz, internal tool, workflow wrapper, integration, report, landing page plus manual fulfilment, narrow automation, or paid pilot.
-5. Define the smallest user journey that proves value.
-6. Cut scope until it is almost uncomfortable.
-7. List what is explicitly out of scope.
-8. Define success and kill criteria before implementation.
-9. Produce a 2–4 week build plan only if the scope is credible.
+1. Start from the evidence packet, problem ledger, grilling notes, and validation results.
+2. Check the v1 evidence gate before scoping:
+   - Specific target user and buyer are known.
+   - Current workaround and cost are grounded in real examples.
+   - At least one validation test produced behavioural signal, not compliments.
+   - The strongest remaining assumption is one a v1 can test.
+3. If the gate fails, stop and return the missing evidence plus the next validation move.
+4. Identify the narrow wedge: the painful sliver where a first product can deliver value.
+5. Identify the riskiest assumption that building can test.
+6. Choose a v1 mode: manual concierge, Wizard-of-Oz, internal tool, workflow wrapper, integration, report, landing page plus manual fulfilment, narrow automation, or paid pilot.
+7. Define the smallest user journey that proves value.
+8. Cut scope until it is almost uncomfortable.
+9. List what is explicitly out of scope.
+10. Define success and kill criteria before implementation.
+11. Produce a 2–4 week build plan only if the evidence gate and scope are credible.
 
 ## Wedge generator
 
@@ -78,6 +83,7 @@ Should not have:
 Manual steps allowed:
 Fake doors allowed:
 Human-in-loop required:
+Data, trust, or compliance risks:
 First demo flow:
 Build estimate:
 Risks:
@@ -105,6 +111,14 @@ Default exclusions unless essential to the test:
 - What can be replaced with a spreadsheet, script, form, email, or admin panel?
 - What would make this impossible in 2–4 weeks?
 - What would count as a strong signal after 10 users?
+
+## Manual and fake-door guardrails
+
+- Do not hide material manual fulfilment when it affects trust, price, delivery expectations, safety, or regulated outcomes.
+- Do not collect unnecessary sensitive data. Minimize and protect personal, health, financial, legal, employment, child-related, and similarly sensitive information.
+- Do not fake endorsements, security claims, compliance status, model accuracy, customer logos, or delivery guarantees.
+- For paid pilots or diagnostics, define scope, limitations, cancellation, and what the user receives before money changes hands.
+- If the v1 touches regulated or high-risk decisions, include a legal/domain review step before launch.
 
 ## Output format
 
@@ -140,6 +154,7 @@ Should not have: ...
 Manual steps allowed: ...
 Fake doors allowed: ...
 Human-in-loop required: ...
+Data, trust, or compliance risks: ...
 First demo flow: ...
 Build estimate: ...
 Risks: ...
@@ -153,6 +168,8 @@ Risks: ...
 - ...
 
 ## 2–4 week build plan
+
+Include this section only when the v1 evidence gate is credible. If the gate fails, replace this section with `## Not build-ready`.
 
 ### Week 1
 - ...
@@ -176,6 +193,37 @@ Risks: ...
 1. ...
 2. ...
 3. ...
+
+## Evidence packet update
+
+Stage: V1 scoped
+Problem statement: ...
+Target user: ...
+Buyer / budget owner: ...
+Current workaround: ...
+Evidence collected: ...
+Weakest assumptions: ...
+Decision gate: [Build v1 / Run more validation / Park / Kill]
+Next step: ...
+```
+
+When the evidence gate fails, use this shorter output instead:
+
+```markdown
+## Not build-ready
+
+Missing evidence:
+1. ...
+2. ...
+3. ...
+
+Next validation move: ...
+
+## Evidence packet update
+
+Stage: V1 blocked
+Decision gate: Run more validation
+Next step: ...
 ```
 
 ## Pitfalls

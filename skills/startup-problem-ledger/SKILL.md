@@ -1,12 +1,9 @@
 ---
 name: startup-problem-ledger
-title: Startup Problem Ledger
 description: Capture raw startup pains and sharpen them into testable problem statements before proposing products.
-version: 0.2.0
-author: Forjd
 license: MIT
-platforms: [linux, macos, windows]
 metadata:
+  display_name: Startup Problem Ledger
   hermes:
     tags: [startup, ideation, problem-discovery, customer-discovery, validation]
     category: business
@@ -34,6 +31,7 @@ Keep the user anchored on the pain, the person feeling it, the moment it happens
 5. Ask only the highest-value missing questions first. Prefer 3–5 questions, not a giant form.
 6. Decide whether the entry is `Startup-shaped`, `Unclear`, or `Probably not`.
 7. Suggest the next validation step, not a product roadmap.
+8. Produce or update the shared evidence packet so later skills inherit the same facts, unknowns, and decision gate.
 
 ## Problem ledger
 
@@ -132,6 +130,18 @@ For ..., who needs to ..., but struggles because ..., currently using ..., the c
 1. ...
 2. ...
 3. ...
+
+## Evidence packet
+
+Stage: Problem ledger
+Problem statement: ...
+Target user: ...
+Buyer / budget owner: ...
+Current workaround: ...
+Evidence collected: ...
+Weakest assumptions: ...
+Decision gate: [Ready to grill / Needs more problem detail / Park]
+Next step: ...
 ```
 
 ## Quality bar

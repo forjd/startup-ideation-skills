@@ -107,9 +107,11 @@ A typical session might look like this:
 1. Capture a raw pain or idea with `startup-problem-ledger`.
 2. Challenge it with `startup-problem-grilling`.
 3. If it survives, design a test with `startup-validation-test-designer`.
-4. If the test creates enough signal, scope a small v1 with `startup-v1-feasibility`.
+4. If the test creates enough behavioural signal from real prospects, scope a small v1 with `startup-v1-feasibility`.
 
 You can also use each skill on its own.
+
+Each step should carry forward an evidence packet with the current problem statement, target user, buyer, workaround, evidence collected, weakest assumptions, decision gate, and next step. The v1 skill should return `Not build-ready` rather than a build plan when that packet does not contain credible validation evidence.
 
 ## Installation
 
@@ -284,6 +286,12 @@ Use startup-validation-test-designer to design a one-week demand test for this i
 
 </details>
 
+## Versioning and release pins
+
+The package version is declared in `.codex-plugin/plugin.json` and `.claude-plugin/plugin.json`, then mirrored in the marketplace manifests. Individual `SKILL.md` files intentionally do not carry top-level version fields; this keeps skill frontmatter compatible with strict Agent Skills validators.
+
+Marketplace entries are pinned to release tags such as `v0.1.1` instead of `main` so installs are reproducible. When publishing a new release, update the package version, update marketplace refs to the matching `vX.Y.Z` tag, commit, tag that commit, and push both the branch and tag.
+
 ## Example prompts
 
 ```text
@@ -312,6 +320,9 @@ It will not try to produce a long list of plausible-sounding SaaS concepts. The 
 
 ```text
 .
+├── .github
+│   └── workflows
+│       └── validate.yml               # Skill and package validation
 ├── .agents
 │   └── plugins
 │       └── marketplace.json          # OpenAI Codex repo marketplace entry
@@ -322,6 +333,9 @@ It will not try to produce a long list of plausible-sounding SaaS concepts. The 
 │   └── plugin.json                   # OpenAI Codex plugin manifest
 ├── LICENSE
 ├── README.md
+├── script
+│   ├── validate                      # Local validation entrypoint
+│   └── validate_skills.rb            # Repo-specific skill/package checks
 └── skills
     ├── README.md
     ├── startup-problem-ledger
@@ -356,6 +370,20 @@ Useful contributions include:
 - Compatibility improvements for other Agent Skills runtimes.
 
 Please keep additions concrete. The goal is not more startup jargon; it is better agent behaviour.
+
+Before opening a PR or publishing a release, run:
+
+```bash
+script/validate
+```
+
+The default validation checks whitespace, JSON manifests, skill frontmatter, skill index coverage, version consistency, release-pinned marketplace refs, and Claude plugin validation when the `claude` CLI is available.
+
+After pushing the matching release tag, you can also run the isolated Codex install smoke test:
+
+```bash
+RUN_CODEX_INSTALL_SMOKE=1 script/validate
+```
 
 ## Licence
 

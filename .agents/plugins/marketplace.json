@@ -6,10 +6,11 @@
   "plugins": [
     {
       "name": "startup-ideation-skills",
+      "version": "0.1.1",
       "source": {
         "source": "url",
         "url": "https://github.com/forjd/startup-ideation-skills.git",
-        "ref": "main"
+        "ref": "v0.1.1"
       },
       "policy": {
         "installation": "AVAILABLE",
